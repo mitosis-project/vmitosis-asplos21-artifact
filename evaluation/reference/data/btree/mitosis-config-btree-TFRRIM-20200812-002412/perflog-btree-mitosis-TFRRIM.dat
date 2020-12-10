@@ -1,0 +1,12 @@
+****success****
+Execution Time (seconds): 314
+Initialization Time (seconds): 1667
+
+# started on Wed Aug 12 02:04:22 2020
+
+652227048637,,cycles:u,313655706541,100.00,,
+291560078090,,dtlb_load_misses.walk_pending:u,313583853253,100.00,,
+2995651,,dtlb_store_misses.walk_pending:u,313583814345,100.00,,
+114593979398,,ept.walk_pending:u,313583748024,100.00,,
+
+/home/ashish/disk/mitosis/mitosis-tools/bin/numactl -m 1 -c 1  --pgtablerepl=3 /home/ashish/disk/mitosis/mitosis-tools/bin/bench_btree_st 

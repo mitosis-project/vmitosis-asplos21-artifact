@@ -1,0 +1,6 @@
+****success****
+Execution Time (seconds): 3
+Initialization Time (seconds): 6
+
+
+/home/ashish/mirage-asplos21-artifact/bin/numactl --pgtablerepl=0 /home/ashish/mirage-asplos21-artifact/bin/bench_test_mt 

@@ -1,0 +1,12 @@
+****success****
+Execution Time (seconds): 469
+Initialization Time (seconds): 8504
+
+# started on Mon Apr  6 21:30:23 2020
+
+183146677124526,,cycles:u,89081924316753,100.00,,
+58595832978092,,dtlb_load_misses.walk_pending:u,89080351988962,100.00,,
+34518965417,,dtlb_store_misses.walk_pending:u,89078376960499,100.00,,
+71001106110344,,ept.walk_pending:u,89075896838790,100.00,,
+
+/home/ashish/disk/mitosis/mitosis-tools/bin/numactl --interleave=all /home/ashish/disk/mitosis/mitosis-tools/bin/bench_xsbench_mt -- -p 75000000 -g 2800000

@@ -1,0 +1,12 @@
+****success****
+Execution Time (seconds): 437
+Initialization Time (seconds): 103
+
+# started on Sat Mar 28 17:54:28 2020
+
+909018250552,,cycles:u,436791162609,100.00,,
+732971282751,,dtlb_load_misses.walk_pending:u,436778654302,100.00,,
+59943488159,,dtlb_store_misses.walk_pending:u,436778603893,100.00,,
+894144484053,,ept.walk_pending:u,436778574266,100.00,,
+
+/home/ashish/mitosis/mitosis-tools/bin/numactl -m 1 -c 1  /home/ashish/mitosis/mitosis-tools/bin/bench_gups_st 

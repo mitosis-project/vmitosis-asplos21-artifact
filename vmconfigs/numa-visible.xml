@@ -1,0 +1,286 @@
+<domain type='kvm'>
+  <name>mirage</name>
+  <uuid>f74d3e3e-c7ef-45ef-b6c1-d3b01d29dfed</uuid>
+  <memory unit='KiB'>1530920960</memory>
+  <currentMemory unit='KiB'>1530920960</currentMemory>
+  <vcpu placement='static'>192</vcpu>
+  <cputune>  
+    <vcpupin vcpu='0' cpuset='0'/>
+    <vcpupin vcpu='1' cpuset='1'/>
+    <vcpupin vcpu='2' cpuset='2'/>
+    <vcpupin vcpu='3' cpuset='3'/>
+    <vcpupin vcpu='4' cpuset='4'/>
+    <vcpupin vcpu='5' cpuset='5'/>
+    <vcpupin vcpu='6' cpuset='6'/>
+    <vcpupin vcpu='7' cpuset='7'/>
+    <vcpupin vcpu='8' cpuset='8'/>
+    <vcpupin vcpu='9' cpuset='9'/>
+    <vcpupin vcpu='10' cpuset='10'/>
+    <vcpupin vcpu='11' cpuset='11'/>
+    <vcpupin vcpu='12' cpuset='12'/>
+    <vcpupin vcpu='13' cpuset='13'/>
+    <vcpupin vcpu='14' cpuset='14'/>
+    <vcpupin vcpu='15' cpuset='15'/>
+    <vcpupin vcpu='16' cpuset='16'/>
+    <vcpupin vcpu='17' cpuset='17'/>
+    <vcpupin vcpu='18' cpuset='18'/>
+    <vcpupin vcpu='19' cpuset='19'/>
+    <vcpupin vcpu='20' cpuset='20'/>
+    <vcpupin vcpu='21' cpuset='21'/>
+    <vcpupin vcpu='22' cpuset='22'/>
+    <vcpupin vcpu='23' cpuset='23'/>
+    <vcpupin vcpu='24' cpuset='24'/>
+    <vcpupin vcpu='25' cpuset='25'/>
+    <vcpupin vcpu='26' cpuset='26'/>
+    <vcpupin vcpu='27' cpuset='27'/>
+    <vcpupin vcpu='28' cpuset='28'/>
+    <vcpupin vcpu='29' cpuset='29'/>
+    <vcpupin vcpu='30' cpuset='30'/>
+    <vcpupin vcpu='31' cpuset='31'/>
+    <vcpupin vcpu='32' cpuset='32'/>
+    <vcpupin vcpu='33' cpuset='33'/>
+    <vcpupin vcpu='34' cpuset='34'/>
+    <vcpupin vcpu='35' cpuset='35'/>
+    <vcpupin vcpu='36' cpuset='36'/>
+    <vcpupin vcpu='37' cpuset='37'/>
+    <vcpupin vcpu='38' cpuset='38'/>
+    <vcpupin vcpu='39' cpuset='39'/>
+    <vcpupin vcpu='40' cpuset='40'/>
+    <vcpupin vcpu='41' cpuset='41'/>
+    <vcpupin vcpu='42' cpuset='42'/>
+    <vcpupin vcpu='43' cpuset='43'/>
+    <vcpupin vcpu='44' cpuset='44'/>
+    <vcpupin vcpu='45' cpuset='45'/>
+    <vcpupin vcpu='46' cpuset='46'/>
+    <vcpupin vcpu='47' cpuset='47'/>
+    <vcpupin vcpu='48' cpuset='48'/>
+    <vcpupin vcpu='49' cpuset='49'/>
+    <vcpupin vcpu='50' cpuset='50'/>
+    <vcpupin vcpu='51' cpuset='51'/>
+    <vcpupin vcpu='52' cpuset='52'/>
+    <vcpupin vcpu='53' cpuset='53'/>
+    <vcpupin vcpu='54' cpuset='54'/>
+    <vcpupin vcpu='55' cpuset='55'/>
+    <vcpupin vcpu='56' cpuset='56'/>
+    <vcpupin vcpu='57' cpuset='57'/>
+    <vcpupin vcpu='58' cpuset='58'/>
+    <vcpupin vcpu='59' cpuset='59'/>
+    <vcpupin vcpu='60' cpuset='60'/>
+    <vcpupin vcpu='61' cpuset='61'/>
+    <vcpupin vcpu='62' cpuset='62'/>
+    <vcpupin vcpu='63' cpuset='63'/>
+    <vcpupin vcpu='64' cpuset='64'/>
+    <vcpupin vcpu='65' cpuset='65'/>
+    <vcpupin vcpu='66' cpuset='66'/>
+    <vcpupin vcpu='67' cpuset='67'/>
+    <vcpupin vcpu='68' cpuset='68'/>
+    <vcpupin vcpu='69' cpuset='69'/>
+    <vcpupin vcpu='70' cpuset='70'/>
+    <vcpupin vcpu='71' cpuset='71'/>
+    <vcpupin vcpu='72' cpuset='72'/>
+    <vcpupin vcpu='73' cpuset='73'/>
+    <vcpupin vcpu='74' cpuset='74'/>
+    <vcpupin vcpu='75' cpuset='75'/>
+    <vcpupin vcpu='76' cpuset='76'/>
+    <vcpupin vcpu='77' cpuset='77'/>
+    <vcpupin vcpu='78' cpuset='78'/>
+    <vcpupin vcpu='79' cpuset='79'/>
+    <vcpupin vcpu='80' cpuset='80'/>
+    <vcpupin vcpu='81' cpuset='81'/>
+    <vcpupin vcpu='82' cpuset='82'/>
+    <vcpupin vcpu='83' cpuset='83'/>
+    <vcpupin vcpu='84' cpuset='84'/>
+    <vcpupin vcpu='85' cpuset='85'/>
+    <vcpupin vcpu='86' cpuset='86'/>
+    <vcpupin vcpu='87' cpuset='87'/>
+    <vcpupin vcpu='88' cpuset='88'/>
+    <vcpupin vcpu='89' cpuset='89'/>
+    <vcpupin vcpu='90' cpuset='90'/>
+    <vcpupin vcpu='91' cpuset='91'/>
+    <vcpupin vcpu='92' cpuset='92'/>
+    <vcpupin vcpu='93' cpuset='93'/>
+    <vcpupin vcpu='94' cpuset='94'/>
+    <vcpupin vcpu='95' cpuset='95'/>
+    <vcpupin vcpu='96' cpuset='96'/>
+    <vcpupin vcpu='97' cpuset='97'/>
+    <vcpupin vcpu='98' cpuset='98'/>
+    <vcpupin vcpu='99' cpuset='99'/>
+    <vcpupin vcpu='100' cpuset='100'/>
+    <vcpupin vcpu='101' cpuset='101'/>
+    <vcpupin vcpu='102' cpuset='102'/>
+    <vcpupin vcpu='103' cpuset='103'/>
+    <vcpupin vcpu='104' cpuset='104'/>
+    <vcpupin vcpu='105' cpuset='105'/>
+    <vcpupin vcpu='106' cpuset='106'/>
+    <vcpupin vcpu='107' cpuset='107'/>
+    <vcpupin vcpu='108' cpuset='108'/>
+    <vcpupin vcpu='109' cpuset='109'/>
+    <vcpupin vcpu='110' cpuset='110'/>
+    <vcpupin vcpu='111' cpuset='111'/>
+    <vcpupin vcpu='112' cpuset='112'/>
+    <vcpupin vcpu='113' cpuset='113'/>
+    <vcpupin vcpu='114' cpuset='114'/>
+    <vcpupin vcpu='115' cpuset='115'/>
+    <vcpupin vcpu='116' cpuset='116'/>
+    <vcpupin vcpu='117' cpuset='117'/>
+    <vcpupin vcpu='118' cpuset='118'/>
+    <vcpupin vcpu='119' cpuset='119'/>
+    <vcpupin vcpu='120' cpuset='120'/>
+    <vcpupin vcpu='121' cpuset='121'/>
+    <vcpupin vcpu='122' cpuset='122'/>
+    <vcpupin vcpu='123' cpuset='123'/>
+    <vcpupin vcpu='124' cpuset='124'/>
+    <vcpupin vcpu='125' cpuset='125'/>
+    <vcpupin vcpu='126' cpuset='126'/>
+    <vcpupin vcpu='127' cpuset='127'/>
+    <vcpupin vcpu='128' cpuset='128'/>
+    <vcpupin vcpu='129' cpuset='129'/>
+    <vcpupin vcpu='130' cpuset='130'/>
+    <vcpupin vcpu='131' cpuset='131'/>
+    <vcpupin vcpu='132' cpuset='132'/>
+    <vcpupin vcpu='133' cpuset='133'/>
+    <vcpupin vcpu='134' cpuset='134'/>
+    <vcpupin vcpu='135' cpuset='135'/>
+    <vcpupin vcpu='136' cpuset='136'/>
+    <vcpupin vcpu='137' cpuset='137'/>
+    <vcpupin vcpu='138' cpuset='138'/>
+    <vcpupin vcpu='139' cpuset='139'/>
+    <vcpupin vcpu='140' cpuset='140'/>
+    <vcpupin vcpu='141' cpuset='141'/>
+    <vcpupin vcpu='142' cpuset='142'/>
+    <vcpupin vcpu='143' cpuset='143'/>
+    <vcpupin vcpu='144' cpuset='144'/>
+    <vcpupin vcpu='145' cpuset='145'/>
+    <vcpupin vcpu='146' cpuset='146'/>
+    <vcpupin vcpu='147' cpuset='147'/>
+    <vcpupin vcpu='148' cpuset='148'/>
+    <vcpupin vcpu='149' cpuset='149'/>
+    <vcpupin vcpu='150' cpuset='150'/>
+    <vcpupin vcpu='151' cpuset='151'/>
+    <vcpupin vcpu='152' cpuset='152'/>
+    <vcpupin vcpu='153' cpuset='153'/>
+    <vcpupin vcpu='154' cpuset='154'/>
+    <vcpupin vcpu='155' cpuset='155'/>
+    <vcpupin vcpu='156' cpuset='156'/>
+    <vcpupin vcpu='157' cpuset='157'/>
+    <vcpupin vcpu='158' cpuset='158'/>
+    <vcpupin vcpu='159' cpuset='159'/>
+    <vcpupin vcpu='160' cpuset='160'/>
+    <vcpupin vcpu='161' cpuset='161'/>
+    <vcpupin vcpu='162' cpuset='162'/>
+    <vcpupin vcpu='163' cpuset='163'/>
+    <vcpupin vcpu='164' cpuset='164'/>
+    <vcpupin vcpu='165' cpuset='165'/>
+    <vcpupin vcpu='166' cpuset='166'/>
+    <vcpupin vcpu='167' cpuset='167'/>
+    <vcpupin vcpu='168' cpuset='168'/>
+    <vcpupin vcpu='169' cpuset='169'/>
+    <vcpupin vcpu='170' cpuset='170'/>
+    <vcpupin vcpu='171' cpuset='171'/>
+    <vcpupin vcpu='172' cpuset='172'/>
+    <vcpupin vcpu='173' cpuset='173'/>
+    <vcpupin vcpu='174' cpuset='174'/>
+    <vcpupin vcpu='175' cpuset='175'/>
+    <vcpupin vcpu='176' cpuset='176'/>
+    <vcpupin vcpu='177' cpuset='177'/>
+    <vcpupin vcpu='178' cpuset='178'/>
+    <vcpupin vcpu='179' cpuset='179'/>
+    <vcpupin vcpu='180' cpuset='180'/>
+    <vcpupin vcpu='181' cpuset='181'/>
+    <vcpupin vcpu='182' cpuset='182'/>
+    <vcpupin vcpu='183' cpuset='183'/>
+    <vcpupin vcpu='184' cpuset='184'/>
+    <vcpupin vcpu='185' cpuset='185'/>
+    <vcpupin vcpu='186' cpuset='186'/>
+    <vcpupin vcpu='187' cpuset='187'/>
+    <vcpupin vcpu='188' cpuset='188'/>
+    <vcpupin vcpu='189' cpuset='189'/>
+    <vcpupin vcpu='190' cpuset='190'/>
+    <vcpupin vcpu='191' cpuset='191'/>
+  </cputune>
+  <numatune>
+    <memnode cellid='0' mode='preferred' nodeset='0'/>
+    <memnode cellid='1' mode='preferred' nodeset='1'/>
+    <memnode cellid='2' mode='preferred' nodeset='2'/>
+    <memnode cellid='3' mode='preferred' nodeset='3'/>
+  </numatune>
+  <os>
+    <type arch='x86_64' machine='pc-i440fx-eoan-hpb'>hvm</type>
+    <kernel>/boot/vmlinuz-4.17.0-lptr+</kernel>
+    <initrd>/boot/initrd.img-4.17.0-lptr+</initrd>
+    <cmdline>console=ttyS0 root=/dev/sda1</cmdline>
+    <boot dev='hd'/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+  </features>
+  <cpu mode='host-passthrough' check='partial'>
+    <numa>
+      <cell id='0' cpus='0,4,8,12,16,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,100,104,108,112,116,120,124,128,132,136,140,144,148,152,156,160,164,168,172,176,180,184,188' memory='382730240' unit='KiB'/>
+      <cell id='1' cpus='1,5,9,13,17,21,25,29,33,37,41,45,49,53,57,61,65,69,73,77,81,85,89,93,97,101,105,109,113,117,121,125,129,133,137,141,145,149,153,157,161,165,169,173,177,181,185,189' memory='382730240' unit='KiB'/>
+      <cell id='2' cpus='2,6,10,14,18,22,26,30,34,38,42,46,50,54,58,62,66,70,74,78,82,86,90,94,98,102,106,110,114,118,122,126,130,134,138,142,146,150,154,158,162,166,170,174,178,182,186,190' memory='382730240' unit='KiB'/>
+      <cell id='3' cpus='3,7,11,15,19,23,27,31,35,39,43,47,51,55,59,63,67,71,75,79,83,87,91,95,99,103,107,111,115,119,123,127,131,135,139,143,147,151,155,159,163,167,171,175,179,183,187,191' memory='382730240' unit='KiB'/>
+    </numa>
+  </cpu>
+  <clock offset='utc'>
+    <timer name='rtc' tickpolicy='catchup'/>
+    <timer name='pit' tickpolicy='delay'/>
+    <timer name='hpet' present='no'/>
+  </clock>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <pm>
+    <suspend-to-mem enabled='no'/>
+    <suspend-to-disk enabled='no'/>
+  </pm>
+  <devices>
+    <emulator>/usr/bin/qemu-system-x86_64</emulator>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='/home/ashish/disk/vms/mitosis.qcow2'/>
+      <target dev='hda' bus='ide'/>
+      <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+    </disk>
+    <controller type='usb' index='0' model='ich9-ehci1'>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x7'/>
+    </controller>
+    <controller type='usb' index='0' model='ich9-uhci1'>
+      <master startport='0'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0' multifunction='on'/>
+    </controller>
+    <controller type='usb' index='0' model='ich9-uhci2'>
+      <master startport='2'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x1'/>
+    </controller>
+    <controller type='usb' index='0' model='ich9-uhci3'>
+      <master startport='4'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x2'/>
+    </controller>
+    <controller type='pci' index='0' model='pci-root'/>
+    <controller type='ide' index='0'>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x1'/>
+    </controller>
+    <interface type='bridge'>
+      <mac address='52:54:00:cd:97:85'/>
+      <source bridge='virbr0'/>
+      <model type='e1000'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0'/>
+    </interface>
+    <serial type='pty'>
+      <target type='isa-serial' port='0'>
+        <model name='isa-serial'/>
+      </target>
+    </serial>
+    <console type='pty'>
+      <target type='serial' port='0'/>
+    </console>
+    <input type='mouse' bus='ps2'/>
+    <input type='keyboard' bus='ps2'/>
+    <memballoon model='virtio'>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x04' function='0x0'/>
+    </memballoon>
+  </devices>
+</domain>
+

@@ -1,0 +1,10 @@
+SLABS INIT: 200 GB, prealloc=0
+=====================================
+/home/ashish/mirage-asplos21-artifact/bin/bench_memcached0_mt 
+<benchmark exec="/home/ashish/mirage-asplos21-artifact/bin/bench_memcached0_mt">
+<config>
+  <openmp>on</openmp>  <memsize>1G <memsize>  <hugetlb>0</hugetlb>
+  <data>-1</data>  <interference>0</interference>
+</config>
+<run>
+ENOMEM: mc tried to allocate 39321600 kB

@@ -1,0 +1,5 @@
+****success****
+Execution Time (seconds): 194
+Initialization Time (seconds): 532
+
+/home/ashish/disk/mitosis/mitosis-tools/bin/numactl -m 1 -c 1  --pgtablerepl=3 /home/ashish/disk/mitosis/mitosis-tools/bin/bench_gups_st 

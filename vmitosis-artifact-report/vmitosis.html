@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>vMitosis-ASPLOS'21</title>
+<style>
+table, th, td {
+  border: 2px solid black;
+}
+body {background-color: lightgray;}
+</style>
+</head>
+<body>
+	<h1 style="color:blue;text-align:center;"><u>Fast Local Page-Tables for Virtualized NUMA Servers with vMitosis</u></h1>
+<h2 style="text-align:center;">Artifact Evaluation Report [ASPLOS'21]</h2>
+<table style="width:100%;">
+  <tr>
+    <th><h2 style="color:black; text-align=center;">Caption</h2></th>
+    <th><h2 style="color:black; text-align:center;">Reference Plots (Paper)</h2></th>
+    <th><h2 style="color:black; text-align:center">Measured Plots (Artifact)</h2></th>
+  </tr>
+  <tr>
+    <td><h3>Figure-1: Impact of Remote ePT and gPT (Thin workloads, 4KiB pages).</h3></td>
+    <td><embed src="./reference/figure-1.pdf" width="700px" height="320px"/></td>
+    <td><embed src="./measured/figure-1.pdf" width="700px" height="320px" /></td>
+    <!--<td><h2>Impact of local/remote<br>ePT and gPT</h2></td>-->
+  </tr>
+  <tr>
+    <td><h3>Figure-2a: Local/remote breakdown of 2D page-table walks for Wide workloads under NUMA-visible configuration. Note: These plots may vary across runs depending on guest OS scheduling. However, Local-Local is expected to be quite low and Remote-Remote should be very high, on average.</h2></h3></td>
+    <td><embed src="./reference/figure-2a.pdf" width="700px" height="335px"/></td>
+    <td><embed src="./measured/figure-2a.pdf" width="700px" height="335px" /></td>
+    <!--<td><h2>Local/remote breakdown<br>of 2D page-table walks for <br>NUMA-visible case</h2></td> -->
+  </tr>
+  <tr>
+    <td><h3>Figure-2b: Local/remote breakdown of 2D page-table walks for Wide workloads under NUMA-oblivious configuration. Note: These plots may also vary across runs depending on guest OS scheduling. However, Local-Local is expected to be quite low and Remote-Remote should be very high, on average.</h3></td>
+    <td><embed src="./reference/figure-2b.pdf" width="700px" height="335px"/></td>
+    <td><embed src="./measured/figure-2b.pdf" width="700px" height="335px" /></td>
+<!--    <td><h2>Local/remote breakdown<br>of 2D page-table walks for <br>NUMA-oblivious case</h2></td> -->
+  </tr>
+  <tr>
+    <td><h3>Figure-3a: Performance gain due to vMitosis via ePT and gPT migration for Thin workloads with 4KiB Pages.</h3></td>
+    <td><embed src="./reference/figure-3a.pdf" width="700px" height="340px"/></td>
+    <td><embed src="./measured/figure-3a.pdf" width="700px" height="340px" /></td>
+<!--    <td><h2>Performance gain due vMitosis<br> via ePT and gPT migration<br>(4KiB Pages)</h2></td> -->
+  </tr>
+  <tr>
+    <td><h3>Figure-3b: Performance gain due to vMitosis via ePT and gPT migration for Thin workloads with 2MiB Pages.</h3></td>
+    <td><embed src="./reference/figure-3b.pdf" width="700px" height="340px"/></td>
+    <td><embed src="./measured/figure-3b.pdf" width="700px" height="340px" /></td>
+<!--    <td><h2>Performance gain due vMitosis<br> via ePT and gPT migration<br>(2MiB Pages)</h2></td> -->
+  </tr>
+  <tr>
+    <td><h3>Figure-3c: Performance gain due to vMitosis via ePT and gPT migration for Thin workloads with 2MiB Pages under fragmented guest OS memory.</h3></td>
+    <td><embed src="./reference/figure-3c.pdf" width="700px" height="340px"/></td>
+    <td><embed src="./measured/figure-3c.pdf" width="700px" height="340px" /></td>
+<!--    <td><h2>Performance gain due vMitosis<br> via ePT and gPT migration<br>(2MiB Pages + fragmentation)</h2></td> -->
+  </tr>
+  <tr>
+    <td><h3>Figure-4a: Performance gain due vMitosis via ePT and gPT replication (Workloads, 4KiB Pages, NUMA-visible configuration).</h3></td>
+    <td><embed src="./reference/figure-4a.pdf" width="700px" height="355px"/></td>
+    <td><embed src="./measured/figure-4a.pdf" width="700px" height="355px" /></td>
+<!--    <td><h2>Performance gain due vMitosis<br> via ePT and gPT replication<br>(4KiB Pages, NUMA-visible VM)</h2></td> -->
+  </tr>
+  <tr>
+    <td><h3>Figure-4b: Performance gain due vMitosis via ePT and gPT replication (Wide workloads, 2MiB Pages, NUMA-visible configuration).</h3></td>
+    <td><embed src="./reference/figure-4b.pdf" width="700px" height="355px"/></td>
+    <td><embed src="./measured/figure-4b.pdf" width="700px" height="355px" /></td>
+<!--    <td><h2>Performance gain due vMitosis<br> via ePT and gPT replication<br>(2MiB Pages, NUMA-visible VM)</h2></td> -->
+  </tr>
+  <tr>
+    <td><h3>Figure-5a: Performance gain due vMitosis via ePT and gPT replication (Wide workloads, 4KiB Pages, NUMA-oblivious configuration).</h3></td>
+    <td><embed src="./reference/figure-5a.pdf" width="700px" height="340px"/></td>
+    <td><embed src="./measured/figure-5a.pdf" width="700px" height="340px" /></td>
+  </tr>
+  <tr>
+    <td><h3>Figure-5b: Performance gain due vMitosis via ePT and gPT replication (Wide workloads, 2MiB Pages, NUMA-oblivious configuration).</h3></td>
+    <td><embed src="./reference/figure-5b.pdf" width="700px" height="350px"/></td>
+    <td><embed src="./measured/figure-5b.pdf" width="700px" height="350px" /></td>
+  </tr>
+  <tr>
+    <td><h3>Figure-6a: Real-time thoughput of a small memcached instance when migrated by the guest OS across NUMA sockets.</h3></td>
+    <td><embed src="./reference/figure-6a.pdf" width="700px" height="500px"/></td>
+    <td><embed src="./measured/figure-6a.pdf" width="700px" height="500px" /></td>
+  </tr>
+  <tr>
+    <td><h3>Figure-6b: Real-time thoughput of a small memcached instance when the VM is migrated by the hypervisor across NUMA sockets. </h3></td>
+    <td><embed src="./reference/figure-6b.pdf" width="700px" height="500px"/></td>
+    <td><embed src="./measured/figure-6b.pdf" width="700px" height="500px" /></td>
+  </tr>
+</body>
+</html>
+

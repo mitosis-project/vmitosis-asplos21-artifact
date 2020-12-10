@@ -1,0 +1,12 @@
+****success****
+Execution Time (seconds): 736
+Initialization Time (seconds): 2105
+
+# started on Sun Nov 22 16:48:51 2020
+
+1507546374117,,cycles:u,725621952296,100.00,,
+314246149563,,dtlb_load_misses.walk_pending:u,725502617118,100.00,,
+6776518,,dtlb_store_misses.walk_pending:u,725502571360,100.00,,
+1038812786210,,ept.walk_pending:u,725502503059,100.00,,
+
+/home/ashish/mirage-asplos21-artifact/bin/numactl -m 1 -c 1  /home/ashish/mirage-asplos21-artifact/bin/bench_btree_st 

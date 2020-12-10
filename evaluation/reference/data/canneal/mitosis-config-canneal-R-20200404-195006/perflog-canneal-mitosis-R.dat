@@ -1,0 +1,12 @@
+****success****
+Execution Time (seconds): 222
+Initialization Time (seconds): 5179
+
+# started on Sat Apr  4 21:16:28 2020
+
+455930559117,,cycles:u,220771218328,100.00,,
+422076060269,,dtlb_load_misses.walk_pending:u,220758071492,100.00,,
+22263372,,dtlb_store_misses.walk_pending:u,220758050545,100.00,,
+0,,ept.walk_pending:u,220758009868,100.00,,
+
+/home/ashish/disk/mitosis/mitosis-tools/bin/numactl -m 1 -c 1  /home/ashish/disk/mitosis/mitosis-tools/bin/bench_canneal_st  1 150000 2000 /home/ashish/disk/mitosis/inputs/canneal/canneal_small 600 

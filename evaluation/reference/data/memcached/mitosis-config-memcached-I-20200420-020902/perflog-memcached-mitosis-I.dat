@@ -1,0 +1,31 @@
+allocating 274877906944 bytes (256 GB) for the hash table
+maximum 624000000000 bytes (581 GB) for the element slabs
+allocating 624000000000 bytes (581 GB) for the element slabs
+=====================================
+allocating 499200000000 bytes (464 GB) for the element array
+Populate the database
+Elms array 0x7dd9c55c8000
+Populating 0 / 3900000000 key-value pairs:
+Populated 3900000000 / 3900000000 key-value pairs:
+=====================================
+signalling readyness to /tmp/alloctest-bench.ready
+signalling done to /tmp/alloctest-bench.done
+/home/ashish/disk/mitosis/mitosis-tools/bin/bench_memcached_mt 
+<benchmark exec="/home/ashish/disk/mitosis/mitosis-tools/bin/bench_memcached_mt">
+<config>
+  <openmp>on</openmp>  <memsize>1G <memsize>  <hugetlb>0</hugetlb>
+  <data>-1</data>  <interference>0</interference>
+</config>
+<run>
+****success****
+Execution Time (seconds): 2273
+Initialization Time (seconds): 13714
+
+# started on Mon Apr 20 05:57:36 2020
+
+213740135687559,,cycles:u,347114433198490,100.00,,
+46691393709504,,dtlb_load_misses.walk_pending:u,347111000487503,100.00,,
+133846119050,,dtlb_store_misses.walk_pending:u,347101511511036,100.00,,
+64430656527039,,ept.walk_pending:u,347084809894450,100.00,,
+
+/home/ashish/disk/mitosis/mitosis-tools/bin/numactl --interleave=all /home/ashish/disk/mitosis/mitosis-tools/bin/bench_memcached_mt 

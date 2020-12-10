@@ -1,0 +1,10 @@
+****success****
+Execution Time (seconds): 548
+Initialization Time (seconds): 21788
+
+# started on Sat May  2 01:19:26 2020
+
+202315287411094,,cycles:u,98531151101163,100.00,,
+103626934701873,,dtlb_load_misses.walk_pending:u,98527031808957,100.00,,
+220578048211,,dtlb_store_misses.walk_pending:u,98517077328524,100.00,,
+0,,ept.walk_pending:u,98507219562218,100.00,,

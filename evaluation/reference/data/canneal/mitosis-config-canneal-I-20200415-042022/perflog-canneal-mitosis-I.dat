@@ -1,0 +1,12 @@
+****success****
+Execution Time (seconds): 3742
+Initialization Time (seconds): 61316
+
+# started on Wed Apr 15 21:22:18 2020
+
+1182277777958369,,cycles:u,596600238514127,100.00,,
+358847891445851,,dtlb_load_misses.walk_pending:u,596599249290586,100.00,,
+5800893833,,dtlb_store_misses.walk_pending:u,596598229119411,100.00,,
+466989618930828,,ept.walk_pending:u,596597193665355,100.00,,
+
+/home/ashish/disk/mitosis/mitosis-tools/bin/numactl --interleave=all /home/ashish/disk/mitosis/mitosis-tools/bin/bench_canneal_mt -- 192 150000 2000 /home/ashish/disk/mitosis/inputs/canneal/canneal_large 400000

@@ -1,0 +1,1 @@
+cmd_/home/ashish/mirage-asplos21-artifact/modules/ptdump.ko := ld -r -m elf_x86_64 -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/ashish/mirage-asplos21-artifact/modules/ptdump.ko /home/ashish/mirage-asplos21-artifact/modules/ptdump.o /home/ashish/mirage-asplos21-artifact/modules/ptdump.mod.o ;  true

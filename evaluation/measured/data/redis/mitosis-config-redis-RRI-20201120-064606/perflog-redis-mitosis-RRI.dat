@@ -1,0 +1,6 @@
+****success****
+Execution Time (seconds): 843
+Initialization Time (seconds): 4829
+
+
+/home/ashish/mirage-asplos21-artifact/bin/numactl -m 1 -c 1  /home/ashish/mirage-asplos21-artifact/bin/bench_redis_st 
