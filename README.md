@@ -64,7 +64,8 @@ sudo apt-get install build-essential libncurses-dev \
                      python3-matplotlib python3-numpy \
                      git wget kernel-package fakeroot ccache \
                      libncurses5-dev wget pandoc libevent-dev \
-                     libreadline-dev python3-setuptools
+                     libreadline-dev python3-setuptools \
+		     qemu-kvm libvirt-bin bridge-utils virtinst virt-manager
 ```                       
 
 In addition the following python libraries, installed with pip
@@ -133,11 +134,65 @@ To compile the different binaries individually, type:
  * memcached: `make memcached`
 
 
+Install and configure a virtual machine
+---------------------------------------
+
+Install a virtual machine using command line (choose ssh-server when prompted for package installation):
+
+```
+virt-install --name vmitosis --ram 4096 --disk path=/home/ashish/vmitosis.qcow2,size=50 --vcpus 4 --os-type linux --os-variant generic --network bridge=virbr0 --graphics none --console pty,target_type=serial --location 'http://archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' --extra-args 'console=ttyS0,115200n8 serial'
+```
+
+Dump the VM configuration file somewhere as follows:
+```
+virsh dumpxml vmitosis > $HOME/config.xml
+```
+
+Now use it to create three VM configurations and place all XML files in "vmitosis-asplos21-artifact/vmconfigs":
+1. NUMA-visible wide VM, using all CPUs and memory (XML file name: "numa-visible.xml")
+2. NUMA-oblivious wide VM, using all CPUs and memory( XML file name:  "numa-oblivious.xml")
+3. NUMA-oblivious thin VM , using CPUs and memory from NUMA socket 0 (XML file name: "small-singlesocket.xml")
+
+The following tags need to be updated while configuring the VM:
+```
+1. <vcpu> </vcpu> -- to update the number of CPUs to be allocated to the VM
+2. <memory> </memory> -- to update the amount of memory to be allocated to the VM
+3. <cputune> <cputune> -- to bind vCPUs to pCPUs
+4. <numatune> </numatune> -- to setup the number of guest NUMA nodes
+5. <cpu><numa> </numa></cpu> -- to bind vCPUs to guest NUMA nodes
+```
+
+The guest OS needs to be booted with vmitosis kernel image. The same can also be configured with "os" tag
+in the XML files as follows:
+```
+  <os>
+    <type arch='x86_64' machine='pc-i440fx-eoan-hpb'>hvm</type>
+    <kernel>/boot/vmlinuz-4.17.0-lptr+</kernel>
+    <initrd>/boot/initrd.img-4.17.0-lptr+</initrd>
+    <cmdline>console=ttyS0 root=/dev/sda1</cmdline>
+    <boot dev='hd'/>
+  </os>
+```
+Refer to "vmitosis-asplos21-artifact/vmconfigs/samples/" for VM configurations used in the paper.
+
+Once all three configuration files are ready, setup passwordless authentication between the host and VM (both ways).
+This can be done, for example, by adding the RSA key of the host user to "$HOME/.ssh/authorized_keys"
+in the guest and vice-versa.
+
+*NOTE:* Update the ip address and user names of the host machine and VM in "vmitosis-asplos21-artifact/scripts/configs.sh"
+in the following fields:
+```
+GUESTUSER
+GUESTADDR
+HOSTUSER
+HOSTADDR
+```
+
 Evaluation Preparation
 ----------------------
 
 To run the evaluations of the paper, you need a suitable machine (see Hardware 
-Dependencies) and you need to boot your machine with the Mitosis-Linux you
+Dependencies) and you need to boot your machine with the vMitosis-Linux you
 downloaded or compiled yourself. Both, the kernel image and the headers!.
 
 To install the kernel module for page-table dumping you need to execute:
@@ -145,7 +200,7 @@ To install the kernel module for page-table dumping you need to execute:
 make install lkml
 ```
 
-It's best to compile it on the machine runnig Mitosis-Linux. 
+It's best to compile it on the machine runnig vMitosis-Linux. 
 ```
 make vmitosis-page-table-dump
 ```
