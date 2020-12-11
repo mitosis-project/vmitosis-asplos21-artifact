@@ -58,7 +58,7 @@ In addition to the packages shipped with Ubuntu 18.04 LTS the following
 packets are required:
 
 ```
-sudo apt-get install build-essential libncurses-dev \
+$ sudo apt-get install build-essential libncurses-dev \
                      bison flex libssl-dev libelf-dev \
                      libnuma-dev python3 python3 python3-pip \
                      python3-matplotlib python3-numpy \
@@ -71,8 +71,8 @@ sudo apt-get install build-essential libncurses-dev \
 In addition the following python libraries, installed with pip
 
 ```
-pip3 install wheel
-pip3 install zenodo-get
+$ pip3 install wheel
+$ pip3 install zenodo-get
 
 ```
 
@@ -92,7 +92,7 @@ which download the pre-compiled binaries, or source code for compilation.
 To obtain the pre-compiled binaries execute:
 
 ```
-./scripts/download_binaries.sh
+$ vmitosis-asplos21-artifact/scripts/download_binaries.sh
 ```
 The pre-compiled binaries are available on [Zenodo.org](https://zenodo.org/record/3558908). 
 You can download them manually and place them in the `precompiled` directory.
@@ -115,8 +115,8 @@ submodules. **Note: the repositories are private at this moment, as they are not
 ready for public release.**
 
 ```
-git submodule init
-git submodule update
+$ git submodule init
+$ git submodule update
 ```
 
 To compile everything just type `make`
@@ -145,7 +145,7 @@ virt-install --name vmitosis --ram 4096 --disk path=/home/ashish/vmitosis.qcow2,
 
 Dump the VM configuration file somewhere as follows:
 ```
-virsh dumpxml vmitosis > $HOME/config.xml
+$ virsh dumpxml vmitosis > $HOME/config.xml
 ```
 
 Now use it to create three VM configurations and place all XML files in "vmitosis-asplos21-artifact/vmconfigs":
@@ -197,12 +197,12 @@ downloaded or compiled yourself. Both, the kernel image and the headers!.
 
 To install the kernel module for page-table dumping you need to execute:
 ```
-make install lkml
+$ make install lkml
 ```
 
 It's best to compile it on the machine runnig vMitosis-Linux. 
 ```
-make vmitosis-page-table-dump
+$ make vmitosis-page-table-dump
 ```
 
 
@@ -219,7 +219,7 @@ artifact on in `./scripts/site_config.sh`. Then run the following script
 locally. 
 
 ```
-./scripts/deploy.sh
+$ vmitosis-asplos21-artifact/scripts/deploy.sh
 ```
 
 Preparing Datasets
@@ -230,7 +230,7 @@ for Figure-4 and Figure-5). Scripts to download or generate the datasets are pla
 `datasets/`. These datasets require approximately 65GB of disk space. Generate datasets as:
 
 ```
-datasets/prepare_canneal_datasets.sh [small|large]
+$ vmitosis-asplos21-artifact/datasets/prepare_canneal_datasets.sh [small|large]
 ```
 
 If dataset is not present, it will be generated automatically while executing the experiment.
@@ -245,23 +245,23 @@ configuration file `site-config.sh`.
 To run all experiments, execute (this may take a while...)
 
 ```
-scripts/run_all.sh
+$ vmitosis-asplos21-artifact/scripts/run_all.sh
 ```
 
 To run the experiments for a single figure, do:
 
- * Figure-1 - `./scripts/run_figure-1.sh`
- * Figure-2 - `./scripts/run_figure-2.sh`
- * Figure-3 - `./scripts/run_figure-3.sh`
- * Figure-4 - `./scripts/run_figure-4.sh`
- * Figure-5 - `./scripts/run_figure-5.sh`
- * Figure-6 - `./scripts/run_figure-6.sh`
+ * Figure-1 - `vmitosis-asplos21-artifact/scripts/run_figure-1.sh`
+ * Figure-2 - `vmitosis-asplos21-artifact/scripts/run_figure-2.sh`
+ * Figure-3 - `vmitosis-asplos21-artifact/scripts/run_figure-3.sh`
+ * Figure-4 - `vmitosis-asplos21-artifact/scripts/run_figure-4.sh`
+ * Figure-5 - `vmitosis-asplos21-artifact/scripts/run_figure-5.sh`
+ * Figure-6 - `vmitosis-asplos21-artifact/scripts/run_figure-6.sh`
 
 You can also execute each bar of the figures separately by supplying the
 benchmark and configuration name as follows:
 
 ```
-./scripts/run_figure-1.sh $BENCHMARK $CONFIG
+$ vmitosis-asplos21-artifact/scripts/run_figure-1.sh $BENCHMARK $CONFIG
 ```
 Naming conventions for arguments:
 
@@ -281,7 +281,7 @@ When you collected all or partial experimental data, you can compile them
 to compare against the reference data shown in the paper:
 
 ```
-./scripts/compile_report.sh
+$ vmitosis-asplos21-artifact/scripts/compile_report.sh
 ```
 
 All PDF plots and CSV files from measured and reference data will be redirected to
@@ -296,7 +296,7 @@ Collecting Experiment Data
 
 In case you used the deploy script, you can execute
 ```
-./scripts/collect-report.sh
+$ vmitosis-asplos21-artifact/scripts/collect-report.sh
 ```
 To copy the report from the remote machine to your local one.
 
