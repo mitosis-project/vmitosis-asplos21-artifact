@@ -16,13 +16,13 @@ The following instructions describe how to run the experiments, process the logs
 #### Running the experiments
 To run the main experiments of the paper, execute as:
 ```
-$ vmitosis-asplos21-artifact/scripts/run_figure-x.sh  [replace x by the figure number from the paper]
+$ vmitosis-asplos21-artifact/scripts/run_figure-x.sh  [replace x with figure number from the paper]
 ```
 By default, each script runs all benchmarks and all configurations from the corresponding figure.
 
 If you are interested in partial evaluation, and wish to run a particular benchmark with a particular configuration, execute as:
 ```
-$ vmitosis-asplos21-artifact/scripts/run_figure-x.sh $BENCH $CONFIG
+$ vmitosis-asplos21-artifact/scripts/run_figure-x.sh $BENCHMARK $CONFIG
 ```
 For example:
 ```
@@ -37,7 +37,7 @@ Once all or partial experiments have completed, you can process the logs as:
 ```
 $ vmitosis-asplos21-artifact/scripts/compile_report.sh
 ```
-Processing the page-table dumps (Figure-2 in the paper) can consume significant time depending on the size of the dumps. Hence, they are not compiled in to the report by default. To compile them separately, run:
+Processing the page-table dumps (Figure-2 in the paper) can consume significant time depending on the size of the dumps (about 30 minutes for each plot). Hence, they are not compiled in to the report by default. To compile them separately, run:
 ```
 $ vmitosis-asplos21-artifact/scripts/compile_ptdumps.sh
 ```
@@ -51,12 +51,12 @@ If a particular bars has been executed multiple times, the runtime will be avera
 #### Finding the raw data from my experiments
 Raw experimental logs are redirected to "vmitosis-asplos21-artifact/evaluation/measured/data/" by the run scripts.
 Processed logs are redirected to "vmitosis-asplos21-artifact/evaluation/measured/processed/", which will contain CSV files for each figure.
-All graphs are redirected to "vmitosis-asplos21-artifact/evaluation/measured/processed/graphs/" while compiling the report.
+
 
 #### Reference logs from the paper
 Reference logs can be found in "vmitosis-asplos21-artifact/evaluation/referece/data/".
-These logs will be compiled by "compile_report.sh" along with the "measured" experiments that you run on your platform.
-Reference graphs can be found in "vmitosis-asplos21-artifact/evaluation/referece/data/graphs", after you compile the report.
+These logs will also be compiled by "compile_report.sh" along with the "measured" experiments that you run on your platform.
+
 
 #### Comparing artifact evaluation with reference data
-Once all or partial experiments have completed and you have compiled the results, an artifact evaluation report will be generated in "vmitosis-asplos21-artifact/vmitosis-artifact-report/". Copy this directory to your local machine and open the "vmitosis-asplos21-artifact/vmitosis-artifact-report/vmitosis.html" page on your favourite web browser to view the graphs side-by-side.
+Once all or partial experiments have completed and you have compiled the results, an artifact evaluation report will be generated in "vmitosis-asplos21-artifact/vmitosis-artifact-report/". The report will contain CSV files and PDF plots for each figure. Copy this directory to your local machine and open the "vmitosis-artifact-report/vmitosis.html" page on your favourite web browser to view the graphs side-by-side.
