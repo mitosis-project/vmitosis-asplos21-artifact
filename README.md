@@ -134,7 +134,7 @@ To compile the different binaries individually, type:
  * memcached: `make memcached`
 
 
-Install and configure a virtual machine
+Install and Configure a Virtual Machine
 ---------------------------------------
 
 Install a virtual machine using command line (choose ssh-server when prompted for package installation):
@@ -179,13 +179,18 @@ Once all three configuration files are ready, setup passwordless authentication 
 This can be done, for example, by adding the RSA key of the host user to "$HOME/.ssh/authorized_keys"
 in the guest and vice-versa.
 
-*NOTE:* Update the ip address and user names of the host machine and VM in "vmitosis-asplos21-artifact/scripts/configs.sh"
+**TODO-1:** Update the ip address and user names of the host machine and VM in "vmitosis-asplos21-artifact/scripts/configs.sh"
 in the following fields:
 ```
 GUESTUSER
 GUESTADDR
 HOSTUSER
 HOSTADDR
+```
+
+**TODO-2:** Configure the guest OS to auto mount the "vmitosis-asplos21-artifact" repository on every boot in the same path as it is in the host using a network file system. An example '/etc/fstab' entry that uses SSHFS is shown below (assuming that the artifact is placed in the home directory of the user):
+```
+ashish@10.202.4.119:/home/ashish/vmitosis-asplos21-artifact /home/ashish/vmitosis-asplos21-artifact fuse.sshfs identityfile=/home/ashish/.ssh/id_rsa,allow_other,default_permissions 0 0
 ```
 
 Evaluation Preparation
