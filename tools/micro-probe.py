@@ -181,7 +181,7 @@ if __name__ == "__main__":
         gPT_cache = int(sys.argv[1])
 
     if len(sys.argv) == 3 and sys.argv[2] == "--verbose":
-        verboes = True
+        verbose = True
         for entry in metric:
             print (entry)
 
