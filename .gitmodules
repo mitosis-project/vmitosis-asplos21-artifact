@@ -4,6 +4,3 @@
 [submodule "sources/vmitosis-page-table-dump"]
 	path = sources/vmitosis-page-table-dump
 	url = https://github.com/mitosis-project/mitosis-page-table-dump.git
-[submodule "sources/vmitosis-numa-discovery"]
-	path = sources/vmitosis-numa-discovery
-	url = https://github.com/mitosis-project/mitosis-numa-discovery.git
