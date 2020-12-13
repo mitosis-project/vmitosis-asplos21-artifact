@@ -20,23 +20,26 @@ SCRIPTROOT=$(dirname `readlink -f "$0"`)
 ROOT=$(dirname `readlink -f "$SCRIPTROOT"`)
 
 BINDIRECTORY=$(readlink $ROOT/bin)
-BINDIR=$(basename $BINDIRECTORY)
-
+if [ -z "${BINDIRECTORY}" ]; then
+	BINDIR="precompiled"
+else
+	BINDIR=$(basename $BINDIRECTORY)
+fi
 if [[ "$BINDIR" == "build" ]]; then
-	echo "Using locally compiled binaries"
-    pushd $ROOT > /dev/null
+	echo "Selected pre-compiled binaries"
+	pushd $ROOT > /dev/null
 	rm -f $ROOT/bin
-	ln -s precompiled bin
-    popd > /dev/null
+	ln -s $ROOT/precompiled $ROOT/bin
+	popd > /dev/null
 	exit 0
 fi
 
 if [[ "$BINDIR" == "precompiled" ]]; then
-	echo "Using pre-compiled binaries"
-    pushd $ROOT > /dev/null
-    rm -f $ROOT/bin
-    ln -s build bin
-    popd > /dev/null
+	echo "Selected locally compiled binaries"
+	pushd $ROOT > /dev/null
+	rm -f $ROOT/bin
+	ln -s $ROOT/build $ROOT/bin
+	popd > /dev/null
 	exit 0
 fi
 
