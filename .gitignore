@@ -1,1 +1,6 @@
 bin/
+tools/dodump
+tools/mini-probe
+evaluation/reference/processed/
+evaluation/measured/processed/*.pdf
+evaluation/measured/processed/*.csv
