@@ -114,7 +114,7 @@ initiate_pt_dump()
 	log_msg "gPT dump: $DUMPFILE"
 	if [ $DUMP_GUEST_PGTABLE = "YES" ]; then
 		# --- dumping 0 = guest pgtable
-		$ROOT/bin/dodump $BENCHMARK_PID 0 $DUMPFILE &
+		$ROOT/bin/page-table-dump $BENCHMARK_PID 0 $DUMPFILE &
 		if [ $? -ne 0 ]; then
 			log_msg "ERROR dumping guest page table"
 		exit

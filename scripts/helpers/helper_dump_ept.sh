@@ -23,4 +23,4 @@ ROOT=$(dirname "${SCRIPTS}")
 DUMPFILE=$RUNDIR/$BENCHMARK\_ept_dump_$NUMACONFIG.dat
 echo "ePT dump: $DUMPFILE"
 # -- second argument, 1 = extended page-tables, 2 = shadow page-tables
-$ROOT/bin/dodump $PID 1 $DUMPFILE &
+$ROOT/bin/page-table-dump $PID 1 $DUMPFILE &

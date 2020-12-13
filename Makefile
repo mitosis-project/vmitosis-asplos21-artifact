@@ -7,7 +7,8 @@
 #          K. Gopinath and Jayneel Gandhi
 #################################################################################
 
-all: vmitosis-numactl vmitosis-page-table-dump vmitosis-numa-discovery
+all: vmitosis-numactl vmitosis-page-table-dump vmitosis-numa-discovery \
+	btree gups canneal xsbench graph500
 
 
 ###############################################################################
@@ -27,9 +28,8 @@ sources/vmitosis-numactl/Makefile: sources/vmitosis-numactl/configure
 
 vmitosis-numactl: $(NDEPS) sources/vmitosis-numactl/Makefile
 	+$(MAKE) -C sources/vmitosis-numactl 
-	cp sources/vmitosis-numactl/.libs/libnuma.la build
-	cp sources/vmitosis-numactl/.libs/libnuma.so* build
-	cp sources/vmitosis-numactl/.libs/numactl build
+	cp sources/vmitosis-numactl/numactl build
+	cp -r sources/vmitosis-numactl/.libs build
 
 
 ###############################################################################
@@ -59,3 +59,62 @@ vmitosis-numa-discovery:
 	+$(MAKE) -C sources/vmitosis-numa-discovery
 	cp sources/vmitosis-numa-discovery/mini-probe build
 	cp sources/vmitosis-numa-discovery/micro-probe.py build
+
+###############################################################################
+# Workloads
+###############################################################################
+
+WORKLOADS=sources/vmitosis-workloads
+WDEPS=sources/vmitosis-workloads/README.md
+
+sources/vmitosis-workloads/README.md:
+	echo "initialized git submodules"
+	git submodule init
+	git submodule update
+
+
+###############################################################################
+# BTree
+###############################################################################
+
+btree : $(WDEPS)
+	+$(MAKE) -C $(WORKLOADS) btree
+	cp $(WORKLOADS)/bin/bench_btree_st build
+
+
+###############################################################################
+# Canneal
+###############################################################################
+
+canneal : $(WDEPS)
+	+$(MAKE) -C $(WORKLOADS) canneal
+	cp $(WORKLOADS)/bin/bench_canneal_st build
+	cp $(WORKLOADS)/bin/bench_canneal_mt build
+
+
+###############################################################################
+# Graph500
+###############################################################################
+
+graph500 : $(WDEPS)
+	+$(MAKE) -C $(WORKLOADS) graph500
+	cp $(WORKLOADS)/bin/bench_graph500_mt build
+
+
+###############################################################################
+# Gups
+###############################################################################
+
+gups : $(WDEPS)
+	+$(MAKE) -C $(WORKLOADS) gups
+	cp $(WORKLOADS)/bin/bench_gups_st build
+	cp $(WORKLOADS)/bin/bench_gups_toy build/bench_test_st
+	cp $(WORKLOADS)/bin/bench_gups_toy build/bench_test_mt
+
+###############################################################################
+# XSBench
+###############################################################################
+
+xsbench : $(WDEPS)
+	+$(MAKE) -C $(WORKLOADS) xsbench
+	cp $(WORKLOADS)/bin/bench_xsbench_mt build

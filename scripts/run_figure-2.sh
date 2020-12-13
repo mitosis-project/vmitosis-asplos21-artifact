@@ -15,8 +15,7 @@ echo "************************************************************************"
 
 #############################################################################
 BENCHMARKS="xsbench graph500 memcached canneal"
-BENCHMARKS="xsbench graph500"
-RUNCONFIGS="V"
+RUNCONFIGS="V O"
 #############################################################################
 
 # --- run a particular config, if supplied
@@ -41,18 +40,25 @@ VMCONFIG=""
 
 install_ptdump_module()
 {
-	pushd $ROOT/modules/ > /dev/null
-	make uninstall > /dev/null 2>&1
-	make clean > /dev/null 2>&1
-	make > /dev/null 2>&1
-	STATUS1=$?
-	sudo make install > /dev/null 2>&1
-	STATUS2=$?
-	if [ $STATUS1 -ne 0 ] || [ $STATUS2 -ne 0 ]; then
-		echo "error loading ptdump kernel module $STATUS1 $STATUS2"
+	#pushd $ROOT/modules/ > /dev/null
+	#sudo make uninstall > /dev/null 2>&1
+	#make clean > /dev/null 2>&1
+	#make > /dev/null 2>&1
+	#STATUS1=$?
+	#sudo make install > /dev/null 2>&1
+	#STATUS2=$?
+	#if [ $STATUS1 -ne 0 ] || [ $STATUS2 -ne 0 ]; then
+	#	echo "error loading ptdump kernel module $STATUS1 $STATUS2"
+	#	exit
+	#fi
+	#popd > /dev/null
+	sudo rmmod page-table-dump > /dev/null 2>&1
+	sudo insmod $ROOT/bin/page-table-dump.ko > /dev/null 2>&1
+	STATUS=$?
+	if [ $STATUS -ne 0 ]; then
+		log_msg "error loading ptdump kernel module"
 		exit
 	fi
-	popd > /dev/null
 }
 
 # --- helper for setting up the environment and bringing up the VM
@@ -74,7 +80,7 @@ prepare_ptdump_environment()
 
     # ---- boot-up the VM
     boot_prepare_kvm_vm
-    ssh $GUESTUSER@$GUESTADDR "sudo insmod $ROOT/modules/page-table-dump.ko" > /dev/null
+    ssh $GUESTUSER@$GUESTADDR "sudo insmod $ROOT/bin/page-table-dump.ko" > /dev/null
     if [ $? -ne 0 ]; then
         log_msg "error inserting GUEST module. Exiting."
         exit
