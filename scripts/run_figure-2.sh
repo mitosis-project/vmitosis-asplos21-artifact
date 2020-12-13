@@ -39,16 +39,33 @@ THP="never"
 AUTONUMA=0
 VMCONFIG=""
 
+install_ptdump_module()
+{
+	pushd $ROOT/modules/ > /dev/null
+	make uninstall > /dev/null 2>&1
+	make clean > /dev/null 2>&1
+	make > /dev/null 2>&1
+	STATUS1=$?
+	sudo make install > /dev/null 2>&1
+	STATUS2=$?
+	if [ $STATUS1 -ne 0 ] || [ $STATUS2 -ne 0 ]; then
+		echo "error loading ptdump kernel module $STATUS1 $STATUS2"
+		exit
+	fi
+	popd > /dev/null
+}
+
 # --- helper for setting up the environment and bringing up the VM
 prepare_ptdump_environment()
 {
-    sudo rmmod ptdump.ko > /dev/null 2>&1
-    (cd $ROOT/modules/ && make clean > /dev/null 2>&1 && make > /dev/null 2>&1)
-    sudo insmod $ROOT/modules/ptdump.ko > /dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        log_msg "error inserting HOST module. Exiting"
-        exit
-    fi
+    #sudo rmmod ptdump.ko > /dev/null 2>&1
+    #(cd $ROOT/modules/ && make clean > /dev/null 2>&1 && make && sudo make install > /dev/null 2>&1)
+    #sudo insmod $ROOT/modules/ptdump.ko > /dev/null 2>&1
+    install_ptdump_module
+    #if [ $? -ne 0 ]; then
+    #    log_msg "error inserting HOST module. Exiting"
+    #    exit
+    #fi
     echo 3 | sudo tee /proc/sys/vm/drop_caches > /dev/null
     echo $AUTONUMA | sudo tee /proc/sys/kernel/numa_balancing > /dev/null
     echo $THP | sudo tee /sys/kernel/mm/transparent_hugepage/enabled >/dev/null
@@ -57,7 +74,7 @@ prepare_ptdump_environment()
 
     # ---- boot-up the VM
     boot_prepare_kvm_vm
-    ssh $GUESTUSER@$GUESTADDR "sudo insmod $ROOT/modules/ptdump.ko" > /dev/null
+    ssh $GUESTUSER@$GUESTADDR "sudo insmod $ROOT/modules/page-table-dump.ko" > /dev/null
     if [ $? -ne 0 ]; then
         log_msg "error inserting GUEST module. Exiting."
         exit
