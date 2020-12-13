@@ -19,12 +19,12 @@
 
 log_msg()
 {
-	echo $1 | tee -a $SCRIPTS/.log
+	echo $1 | tee -a $SCRIPTS/log
 }
 
 log_msg_exact()
 {
-	echo -e $1 | tee -a $SCRIPTS/.log
+	echo -e $1 | tee -a $SCRIPTS/log
 }
 
 stop_kvm_vm()
