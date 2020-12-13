@@ -1,8 +1,0 @@
-XSBench	Socket0	0.0	0.22	0.0	0.78
-XSBench	Socket1	0.24	0.0	0.01	0.75
-XSBench	Socket2	0.25	0.0	0.5	0.25
-XSBench	Socket3	0.0	0.25	0.0	0.75
-Graph500	Socket0	0.27	0.17	0.05	0.51
-Graph500	Socket1	0.16	0.07	0.36	0.41
-Graph500	Socket2	0.0	0.2	0.06	0.74
-Graph500	Socket3	0.0	0.1	0.07	0.83

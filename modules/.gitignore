@@ -4,3 +4,6 @@
 *.ko
 *.mod
 *.mod.c
+*cache.mk
+*.o
+*.mod.o

@@ -1,6 +1,10 @@
 bin/
 tools/dodump
 tools/mini-probe
-evaluation/reference/processed/
+evaluation/reference/processed/*.pdf
+evaluation/reference/processed/*.csv
 evaluation/measured/processed/*.pdf
 evaluation/measured/processed/*.csv
+evaluation/measured/data/ptdumps/
+scripts/log
+scripts/.log
