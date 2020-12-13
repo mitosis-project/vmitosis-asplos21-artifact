@@ -1,0 +1,6 @@
+[submodule "sources/vmitosis-numactl"]
+	path = sources/vmitosis-numactl
+	url = https://github.com/mitosis-project/mitosis-numactl.git
+[submodule "sources/vmitosis-page-table-dump"]
+	path = sources/vmitosis-page-table-dump
+	url = https://github.com/mitosis-project/mitosis-page-table-dump.git
