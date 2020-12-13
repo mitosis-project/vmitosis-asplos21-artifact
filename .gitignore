@@ -8,3 +8,5 @@ evaluation/measured/processed/*
 evaluation/measured/data/ptdumps/
 evaluation/reference/data/ptdumps/
 scripts/*log
+datasets/canneal_small
+datasets/canneal_large
