@@ -1,6 +1,0 @@
-****success****
-Execution Time (seconds): 8
-Initialization Time (seconds): 65
-
-
-/home/ashish/vmitosis-asplos21-artifact/bin/numactl --pgtablerepl=3 /home/ashish/vmitosis-asplos21-artifact/bin/bench_graph500_mt -- -s 25 -e 52

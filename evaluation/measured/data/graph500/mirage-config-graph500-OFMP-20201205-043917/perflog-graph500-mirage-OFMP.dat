@@ -1,6 +1,0 @@
-****success****
-Execution Time (seconds): 714
-Initialization Time (seconds): 8427
-
-
-/home/ashish/mirage-asplos21-artifact/bin/numactl --pgtablerepl=0 /home/ashish/mirage-asplos21-artifact/bin/bench_graph500_mt -- -s 30 -e 52

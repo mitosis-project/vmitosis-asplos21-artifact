@@ -1,6 +1,0 @@
-****success****
-Execution Time (seconds): 80
-Initialization Time (seconds): 25
-
-
-/home/ashish/mirage-asplos21-artifact/bin/numactl -m 0 -c 0  /home/ashish/mirage-asplos21-artifact/bin/bench_gups_st 

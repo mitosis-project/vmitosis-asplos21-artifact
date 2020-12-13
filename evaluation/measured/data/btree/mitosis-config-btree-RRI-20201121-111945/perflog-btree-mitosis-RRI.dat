@@ -1,6 +1,0 @@
-****success****
-Execution Time (seconds): 1064
-Initialization Time (seconds): 2117
-
-
-/home/ashish/mirage-asplos21-artifact/bin/numactl -m 1 -c 1  /home/ashish/mirage-asplos21-artifact/bin/bench_btree_st 
