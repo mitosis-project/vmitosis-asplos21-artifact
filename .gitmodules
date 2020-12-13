@@ -7,3 +7,6 @@
 [submodule "sources/vmitosis-numa-discovery"]
 	path = sources/vmitosis-numa-discovery
 	url = https://github.com/mitosis-project/mitosis-numa-discovery.git
+[submodule "sources/vmitosis-workloads"]
+	path = sources/vmitosis-workloads
+	url = https://github.com/mitosis-project/vmitosis-workloads.git
