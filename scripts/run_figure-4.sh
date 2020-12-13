@@ -14,12 +14,11 @@ echo "ASPLOS'21 - Artifact Evaluation - vMitosis - Figure-4"
 echo "************************************************************************"
 
 #############################################################################
-# BENCHMARKS="memcached xsbench graph500 canneal"
-BENCHMARKS="graph500"
+BENCHMARKS="memcached xsbench graph500 canneal"
+#BENCHMARKS="test"
 
 # --- ePT/gPT replication enabled/disabled
 RUNCONFIGS="F FM FA FAM I IM TF TFM TFA TFAM TI TIM"
-RUNCONFIGS="TFE TFAE TIE TFG TFAG TIG"
 #############################################################################
 
 

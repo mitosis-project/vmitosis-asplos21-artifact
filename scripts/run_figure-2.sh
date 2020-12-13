@@ -15,6 +15,8 @@ echo "************************************************************************"
 
 #############################################################################
 BENCHMARKS="xsbench graph500 memcached canneal"
+#BENCHMARKS="test"
+
 RUNCONFIGS="V O"
 #############################################################################
 
@@ -40,18 +42,6 @@ VMCONFIG=""
 
 install_ptdump_module()
 {
-	#pushd $ROOT/modules/ > /dev/null
-	#sudo make uninstall > /dev/null 2>&1
-	#make clean > /dev/null 2>&1
-	#make > /dev/null 2>&1
-	#STATUS1=$?
-	#sudo make install > /dev/null 2>&1
-	#STATUS2=$?
-	#if [ $STATUS1 -ne 0 ] || [ $STATUS2 -ne 0 ]; then
-	#	echo "error loading ptdump kernel module $STATUS1 $STATUS2"
-	#	exit
-	#fi
-	#popd > /dev/null
 	sudo rmmod page-table-dump > /dev/null 2>&1
 	sudo insmod $ROOT/bin/page-table-dump.ko > /dev/null 2>&1
 	STATUS=$?
@@ -64,14 +54,7 @@ install_ptdump_module()
 # --- helper for setting up the environment and bringing up the VM
 prepare_ptdump_environment()
 {
-    #sudo rmmod ptdump.ko > /dev/null 2>&1
-    #(cd $ROOT/modules/ && make clean > /dev/null 2>&1 && make && sudo make install > /dev/null 2>&1)
-    #sudo insmod $ROOT/modules/ptdump.ko > /dev/null 2>&1
     install_ptdump_module
-    #if [ $? -ne 0 ]; then
-    #    log_msg "error inserting HOST module. Exiting"
-    #    exit
-    #fi
     echo 3 | sudo tee /proc/sys/vm/drop_caches > /dev/null
     echo $AUTONUMA | sudo tee /proc/sys/kernel/numa_balancing > /dev/null
     echo $THP | sudo tee /sys/kernel/mm/transparent_hugepage/enabled >/dev/null

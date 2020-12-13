@@ -15,9 +15,9 @@ echo "************************************************************************"
 
 #############################################################################
 BENCHMARKS="xsbench graph500 memcached canneal"
-BENCHMARKS="graph500 xsbench"
+BENCHMARKS="test"
+
 RUNCONFIGS="OF OFMP OFMF TOF TOFMP TOFMF"
-RUNCONFIGS="TOF TOFMF"
 #############################################################################
 
 # --- run a particular config, if supplied

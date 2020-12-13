@@ -14,12 +14,12 @@ echo "ASPLOS'21 - Artifact Evaluation -  vMitosis- Figure-3"
 echo "************************************************************************"
 
 #############################################################################
-# BENCHMARKS="gups btree redis xsbench memcached canneal"
-BENCHMARKS="xsbench"
+BENCHMARKS="gups btree redis xsbench memcached canneal"
+#BENCHMARKS="test"
+
 # GPT/EPT (Local/Remote)
 # "LL RRI" are supported but they can be re-used from Figure-1
-RUNCONFIGS="RRIE RRIG RRIM TLL TRRI TRRIE TRRIG TRRIM" # "LL RRI"
-RUNCONFIGS="TRRIG TRRIM"
+RUNCONFIGS="RRIE RRIG RRIM TLL TRRI TRRIE TRRIG TRRIM TFLL TFRRI TFRRIE TFRRIG TFRRIM"
 #############################################################################
 
 

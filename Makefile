@@ -118,3 +118,6 @@ gups : $(WDEPS)
 xsbench : $(WDEPS)
 	+$(MAKE) -C $(WORKLOADS) xsbench
 	cp $(WORKLOADS)/bin/bench_xsbench_mt build
+
+clean:
+	rm build/*

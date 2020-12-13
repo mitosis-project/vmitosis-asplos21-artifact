@@ -15,12 +15,11 @@ echo "************************************************************************"
 
 
 #############################################################################
-# BENCHMARKS="gups btree redis xsbench memcached canneal"
-BENCHMARKS="canneal"
+BENCHMARKS="gups btree redis xsbench memcached canneal"
+#BENCHMARKS="test"
 
 # gPT/ePT (Local/Remote)
-RUNCONFIGS="LL LR RL RR LRI RLI RRI" #TLL TLR TRL TRR TLRI TRLI TRRI
-RUNCONFIGS="LL RR RRI"
+RUNCONFIGS="LL LR RL RR LRI RLI RRI"
 #############################################################################
 
 

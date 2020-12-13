@@ -16,9 +16,9 @@ echo "************************************************************************"
 #############################################################################
 # --- list of benchmarks (edit this to run a subset of benchmarks)
 BENCHMARKS="memcached" # -- This is the only workload for these experiments
+
 # --- list of configurations (edit this to run a subset of configurations)
 RUNCONFIGS="RRI RRIE RRIG RRIM V-IR RI RIE O-IR"
-RUNCONFIGS="RRIE RI"
 #############################################################################
 
 
