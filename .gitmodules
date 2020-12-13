@@ -1,12 +1,16 @@
 [submodule "sources/vmitosis-numactl"]
 	path = sources/vmitosis-numactl
 	url = https://github.com/mitosis-project/mitosis-numactl.git
+	ignore = dirty
 [submodule "sources/vmitosis-page-table-dump"]
 	path = sources/vmitosis-page-table-dump
 	url = https://github.com/mitosis-project/mitosis-page-table-dump.git
+	ignore = dirty
 [submodule "sources/vmitosis-numa-discovery"]
 	path = sources/vmitosis-numa-discovery
 	url = https://github.com/mitosis-project/mitosis-numa-discovery.git
+	ignore = dirty
 [submodule "sources/vmitosis-workloads"]
 	path = sources/vmitosis-workloads
 	url = https://github.com/mitosis-project/vmitosis-workloads.git
+	ignore = dirty
