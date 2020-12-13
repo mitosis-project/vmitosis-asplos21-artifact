@@ -6,5 +6,6 @@ evaluation/reference/processed/*.csv
 evaluation/measured/processed/*.pdf
 evaluation/measured/processed/*.csv
 evaluation/measured/data/ptdumps/
+evaluation/reference/data/ptdumps/
 scripts/log
 scripts/.log
