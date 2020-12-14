@@ -148,7 +148,7 @@ Dump the VM configuration file somewhere as follows:
 $ virsh dumpxml vmitosis > $HOME/config.xml
 ```
 
-Now use it to create three VM configurations and place all XML files in "vmitosis-asplos21-artifact/vmconfigs":
+**TODO-1:** Use config.xml to create three VM configurations and place all XML files in "vmitosis-asplos21-artifact/vmconfigs":
 1. NUMA-visible wide VM, using all CPUs and memory (XML file name: "numa-visible.xml")
 2. NUMA-oblivious wide VM, using all CPUs and memory( XML file name:  "numa-oblivious.xml")
 3. NUMA-oblivious thin VM , using CPUs and memory from NUMA socket 0 (XML file name: "small-singlesocket.xml")
@@ -179,7 +179,7 @@ Once all three configuration files are ready, setup passwordless authentication 
 This can be done, for example, by adding the RSA key of the host user to "$HOME/.ssh/authorized_keys"
 in the guest and vice-versa.
 
-**TODO-1:** Update the ip address and user names of the host machine and VM in "vmitosis-asplos21-artifact/scripts/configs.sh"
+**TODO-2:** Update the ip address and user names of the host machine and VM in "vmitosis-asplos21-artifact/scripts/configs.sh"
 in the following fields:
 ```
 GUESTUSER
@@ -188,7 +188,7 @@ HOSTUSER
 HOSTADDR
 ```
 
-**TODO-2:** Configure the guest OS to auto mount the "vmitosis-asplos21-artifact" repository on every boot in the same path as it is in the host using a network file system. An example '/etc/fstab' entry that uses SSHFS is shown below (assuming that the artifact is placed in the home directory of the user):
+**TODO-3:** Configure the guest OS to auto mount the "vmitosis-asplos21-artifact" repository on every boot in the same path as it is in the host using a network file system. An example '/etc/fstab' entry that uses SSHFS is shown below (assuming that the artifact is placed in the home directory of the user):
 ```
 ashish@10.202.4.119:/home/ashish/vmitosis-asplos21-artifact /home/ashish/vmitosis-asplos21-artifact fuse.sshfs identityfile=/home/ashish/.ssh/id_rsa,allow_other,default_permissions 0 0
 ```
