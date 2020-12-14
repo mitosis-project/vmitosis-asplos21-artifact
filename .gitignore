@@ -13,3 +13,5 @@ datasets/canneal_large
 vmconfigs/numa-visible.xml
 vmconfigs/numa-oblivious.xml
 vmconfigs/small-singlesocket.xml
+vmitosis-artifact-report/measured/*
+vmitosis-artifact-report/reference/*
