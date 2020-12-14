@@ -8,7 +8,7 @@
 #################################################################################
 
 all: vmitosis-numactl vmitosis-page-table-dump vmitosis-numa-discovery \
-	btree gups canneal xsbench graph500
+	btree gups canneal xsbench graph500 redis stream
 
 
 ###############################################################################
@@ -111,6 +111,7 @@ gups : $(WDEPS)
 	cp $(WORKLOADS)/bin/bench_gups_toy build/bench_test_st
 	cp $(WORKLOADS)/bin/bench_gups_toy build/bench_test_mt
 
+
 ###############################################################################
 # XSBench
 ###############################################################################
@@ -118,6 +119,24 @@ gups : $(WDEPS)
 xsbench : $(WDEPS)
 	+$(MAKE) -C $(WORKLOADS) xsbench
 	cp $(WORKLOADS)/bin/bench_xsbench_mt build
+
+
+###############################################################################
+# Redis
+###############################################################################
+
+redis : $(WDEPS)
+	+$(MAKE) -C $(WORKLOADS) redis
+	cp $(WORKLOADS)/bin/bench_redis_st build
+
+
+###############################################################################
+# STREAM
+###############################################################################
+
+stream : $(WDEPS)
+	+$(MAKE) -C $(WORKLOADS) stream
+	cp $(WORKLOADS)/bin/bench_stream build
 
 clean:
 	rm build/*
