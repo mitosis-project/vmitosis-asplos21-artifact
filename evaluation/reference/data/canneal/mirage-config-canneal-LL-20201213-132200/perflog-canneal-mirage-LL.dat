@@ -1,0 +1,6 @@
+****success****
+Execution Time (seconds): 249
+Initialization Time (seconds): 2472
+
+
+/home/ashish/vmitosis-asplos21-artifact/bin/numactl -m 0 -c 0  /home/ashish/vmitosis-asplos21-artifact/bin/bench_canneal_st  1 150000 2000 /home/ashish/vmitosis-asplos21-artifact/datasets/canneal_small 600
