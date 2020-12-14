@@ -91,7 +91,8 @@ function process_numa_oblivious()
 	rm -r $HELPERS/tmp > /dev/null 2>&1
 }
 
-for TARGET in "measured reference"; do
+TARGETS="measured reference"
+for TARGET in $TARGETS; do
 	process_numa_visible $TARGET
 	process_numa_oblivious $TARGET
 done
