@@ -10,3 +10,6 @@ evaluation/reference/data/ptdumps/
 scripts/*log
 datasets/canneal_small
 datasets/canneal_large
+vmconfigs/numa-visible.xml
+vmconfigs/numa-oblivious.xml
+vmconfigs/small-singlesocket.xml
