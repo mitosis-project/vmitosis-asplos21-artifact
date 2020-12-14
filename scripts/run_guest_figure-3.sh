@@ -115,7 +115,7 @@ fragment_memory()
 	wait $PID_1
 	wait $PID_2
 	log_msg  "Initiating random reads. This will take a while..."
-	$ROOT/bin/fragment.py $FRAGMENT_FILE1 $FRAGMENT_FILE2 $NR_SECONDS $NR_THREADS > /dev/null
+	$ROOT/scripts/helpers/fragment.py $FRAGMENT_FILE1 $FRAGMENT_FILE2 $NR_SECONDS $NR_THREADS > /dev/null
 	log_msg  "Fragmentation completed."
 }
 
