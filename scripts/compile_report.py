@@ -287,7 +287,7 @@ if __name__=="__main__":
         datadir = os.path.join(root, ("evaluation/%s/data" %(target)))
         out_dir = os.path.join(root, ("evaluation/%s/processed/" %(target)))
         if not os.path.exists(out_dir):
-            os.mkdir(out_dir)
+            os.makedirs(out_dir)
 
         for benchmark in workloads:
                 path = os.path.join(datadir, benchmark)
