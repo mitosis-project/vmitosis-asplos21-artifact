@@ -184,7 +184,8 @@ func_exec_program ()
 
   program='numactl'
   progdir="$thisdir/.libs"
-
+  LD_LIBRARY_PATH="$progdir:$LD_LIBRARY_PATH"
+  export LD_LIBRARY_PATH
 
   if test -f "$progdir/$program"; then
     # Add our own library path to LD_LIBRARY_PATH
