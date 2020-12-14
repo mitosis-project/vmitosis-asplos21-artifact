@@ -14,3 +14,4 @@
 	path = sources/vmitosis-workloads
 	url = https://github.com/mitosis-project/vmitosis-workloads.git
 	ignore = dirty
+	update = rebase
