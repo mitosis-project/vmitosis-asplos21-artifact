@@ -13,7 +13,8 @@ echo "************************************************************************"
 echo "ASPLOS'21 - Artifact Evaluation - vMitosis - Delete page-table dumps"
 echo "************************************************************************"
 
-SCRIPTS=$(readlink -f "`dirname $(readlink -f "$0")`")
+HELPERS=$(readlink -f "`dirname $(readlink -f "$0")`")
+SCRIPTS=$(dirname "${HELPERS}")
 ROOT=$(dirname "${SCRIPTS}")
 
 del_raw_ptdumps()

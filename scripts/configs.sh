@@ -9,7 +9,12 @@
 #          K. Gopinath and Jayneel Gandhi
 #################################################################################
 
-# --- required for host to guest commands
+# --- update to deploy on a different test machine
+MACHINE=hostname
+URL=$MACHINE:vmitosis-asplos21-artifact
+
+
+# --- required for ssh from host to guest or vice-versa
 GUESTUSER=ashish
 GUESTADDR="192.168.122.112"
 HOSTUSER=ashish
