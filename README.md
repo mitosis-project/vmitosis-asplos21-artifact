@@ -65,7 +65,9 @@ $ sudo apt-get install build-essential libncurses-dev \
                      git wget kernel-package fakeroot ccache \
                      libncurses5-dev wget pandoc libevent-dev \
                      libreadline-dev python3-setuptools \
-		     qemu-kvm libvirt-bin bridge-utils virtinst virt-manager
+		     libtool autoconf automake autotools-dev \
+		     pkg-config libev-dev qemu-kvm libvirt-bin \
+		     bridge-utils virtinst virt-manager
 ```                       
 
 In addition the following python libraries, installed with pip
