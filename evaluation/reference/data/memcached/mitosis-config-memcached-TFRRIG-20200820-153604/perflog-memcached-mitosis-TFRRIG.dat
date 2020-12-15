@@ -1,0 +1,29 @@
+SLABS INIT: 412 GB, prealloc=0
+=====================================
+Populate the database
+Elms array 0x7fbe00000000
+Populated 2306867200 / 2306867200 key-value pairs:
+=====================================
+signalling readyness to /tmp/alloctest-bench.ready
+signalling done to /tmp/alloctest-bench.done
+/home/ashish/disk/mitosis/mitosis-tools/bin/bench_memcached_st 
+<benchmark exec="/home/ashish/disk/mitosis/mitosis-tools/bin/bench_memcached_st">
+<config>
+  <openmp>on</openmp>  <memsize>1G <memsize>  <hugetlb>0</hugetlb>
+  <data>-1</data>  <interference>0</interference>
+</config>
+<run>
+Queries: 10000000000 Threads: 1
+Total Queries: 10000000000 Throughput: 15873015
+****success****
+Execution Time (seconds): 629
+Initialization Time (seconds): 5680
+
+# started on Thu Aug 20 18:42:42 2020
+
+33079359792919,,cycles:u,25950858258164,100.00,,
+9790794713586,,dtlb_load_misses.walk_pending:u,25950726769797,100.00,,
+37158917899,,dtlb_store_misses.walk_pending:u,25950588383690,100.00,,
+13683730060421,,ept.walk_pending:u,25950408051351,100.00,,
+
+/home/ashish/disk/mitosis/mitosis-tools/bin/numactl -m 1 -c 1  --pgtablerepl=3 /home/ashish/disk/mitosis/mitosis-tools/bin/bench_memcached_st 
