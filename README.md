@@ -70,19 +70,6 @@ $ sudo apt-get install build-essential libncurses-dev \
 		     bridge-utils virtinst virt-manager
 ```                       
 
-In addition the following python libraries, installed with pip
-
-```
-$ pip3 install wheel
-$ pip3 install zenodo-get
-
-```
-
-**Docker** There is a docker image which you can use to compile. You can do
-`make docker-shell` to obtain a shell in the docker container, or just to 
-compile everything type `make docker-compile`.
-
-
 Obtaining Pre-Compiled Binaries
 -------------------------------
 
