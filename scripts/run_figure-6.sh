@@ -37,7 +37,7 @@ source $SCRIPTS/helpers/common.sh
 #############################################################################
 #                        DON'T EDIT BELOW THIS LINE                         #
 #############################################################################
-THP=""
+THP="never"
 AUTONUMA=1
 VMCONFIG="NUMA-visible"
 
@@ -118,7 +118,7 @@ for BENCHMARK in $BENCHMARKS; do
 		if [[ $CONFIG == *RRI* ]] || [[ $CONFIG == *V* ]]; then
 			VMCONFIG="NUMA-visible"
 		elif [ $CONFIG = "RI" ] || [ $CONFIG = "RIE" ] || [[ $CONFIG == *O* ]]; then
-			VMCONFIG="singlesocket"
+			VMCONFIG="thin"
 		else
 			log_msg "unknown VM config...exiting"
 			exit

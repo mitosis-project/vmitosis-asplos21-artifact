@@ -52,9 +52,9 @@ copy_vm_config()
 		echo "configuring NUMA-oblivious VM..."
 		sudo cp $ROOT/vmconfigs/numa-oblivious.xml /etc/libvirt/qemu/$VMIMAGE.xml
 		STATUS=$?
-	elif [ $VMCONFIG = "singlesocket" ]; then
+	elif [ $VMCONFIG = "thin" ]; then
 		#echo "configuring a small single socket VM..."
-		sudo cp $ROOT/vmconfigs/small-singlesocket.xml /etc/libvirt/qemu/$VMIMAGE.xml
+		sudo cp $ROOT/vmconfigs/thin.xml /etc/libvirt/qemu/$VMIMAGE.xml
 		STATUS=$?
 	fi
 	sudo service libvirtd start
