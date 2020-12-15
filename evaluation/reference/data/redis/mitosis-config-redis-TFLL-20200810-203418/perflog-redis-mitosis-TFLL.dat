@@ -1,0 +1,5 @@
+****success****
+Execution Time (seconds): 353
+Initialization Time (seconds): 2497
+
+/home/ashish/disk/mitosis/mitosis-tools/bin/numactl -m 1 -c 1  --pgtablerepl=3 /home/ashish/disk/mitosis/mitosis-tools/bin/bench_redis_st 
