@@ -109,7 +109,6 @@ gups : $(WDEPS)
 	+$(MAKE) -C $(WORKLOADS) gups
 	cp $(WORKLOADS)/bin/bench_gups_st build
 	cp $(WORKLOADS)/bin/bench_gups_toy build/bench_test_st
-	cp $(WORKLOADS)/bin/bench_gups_toy build/bench_test_mt
 
 
 ###############################################################################
@@ -119,6 +118,7 @@ gups : $(WDEPS)
 xsbench : $(WDEPS)
 	+$(MAKE) -C $(WORKLOADS) xsbench
 	cp $(WORKLOADS)/bin/bench_xsbench_mt build
+	cp $(WORKLOADS)/bin/bench_xsbench_mt build/bench_test_mt
 
 
 ###############################################################################
