@@ -200,8 +200,8 @@
   </cputune>
   <os>
     <type arch='x86_64' machine='pc-i440fx-eoan-hpb'>hvm</type>
-    <kernel>/boot/vmlinuz-4.17.0-lptr+</kernel>
-    <initrd>/boot/initrd.img-4.17.0-lptr+</initrd>
+    <kernel>/boot/vmlinuz-4.17.0-mitosis+</kernel>
+    <initrd>/boot/initrd.img-4.17.0-mitosis+</initrd>
     <cmdline>console=ttyS0 root=/dev/sda1</cmdline>
     <boot dev='hd'/>
   </os>
