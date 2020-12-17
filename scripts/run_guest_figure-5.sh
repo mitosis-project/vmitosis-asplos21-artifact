@@ -74,6 +74,8 @@ prepare_all_pathnames()
         BENCHPATH=$ROOT"/bin/$BIN"
         #PERF=$ROOT"/bin/perf"
         NUMACTL=$ROOT"/bin/numactl"
+	PROBE=$ROOT"/bin/micro-probe.py"
+	MINI_PROBE=$ROOT"/bin/mini-probe"
         if [ ! -e $BENCHPATH ]; then
             echo "Benchmark binary is missing: $BENCHPATH"
             exit
@@ -84,6 +86,10 @@ prepare_all_pathnames()
         #fi
         if [ ! -e $NUMACTL ]; then
             echo "numactl is missing: $NUMACTL"
+            exit
+        fi
+        if [ ! -e $PROBE ] || [ ! -e $MINI_PROBE ]; then
+            echo "NUMA probe binary is missing: $PROBE/$MINI_PROBE"
             exit
         fi
 	DATADIR=$ROOT"/evaluation/measured/data/$BENCHMARK"
@@ -124,7 +130,7 @@ prepare_numactl_prefix()
 	elif [[ $CURR_CONFIG == *MF ]]; then
 		echo "configuring vNUMA groups in PROBE mode"
 		#echo 2 | sudo tee /proc/sys/kernel/pgtable_replication_mode > /dev/null
-		PROBE_SRC="$ROOT/tools/micro-probe.py $GPT_CACHE"
+		PROBE_SRC="$PROBE $GPT_CACHE"
 		$PROBE_SRC > /dev/null
 		if [ $? -ne 0 ]; then
 			echo "error configuring pgtable settings..."

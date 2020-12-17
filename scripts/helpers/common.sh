@@ -30,14 +30,18 @@ log_msg_exact()
 stop_kvm_vm()
 {
 	PID=$(pgrep qemu-system-x86)
-	if [ "$PID" ]; then
+	if [[ ! -z "${PID}" ]]; then
 		log_msg "VM is running. Shutting down."
 		ssh $GUESTUSER@$GUESTADDR "sudo shutdown now" &> /dev/null
 		wait $PID 2>/dev/null
 		sleep $WAIT_SECS_SHORT
-		#log_msg "VM stopped. Preparing to launch next config"
 	fi
 	virsh destroy $VMIMAGE > /dev/null 2>&1
+	PID=$(pgrep qemu-system-x86)
+	if [[ ! -z "${PID}" ]]; then
+		echo "failed to shutdown VM. Please force shutdown manually and run again."
+		exit
+	fi
 }
 
 copy_vm_config()
