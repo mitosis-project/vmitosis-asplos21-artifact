@@ -44,7 +44,7 @@ Hardware Dependencies
 
 Some of the workingset sizes of the workloads are hardcoded in the binaries.
 To run them, you need to have a multi-socket machine with at least 384GB of 
-memory *per* NUMA node. e.g. 4 socket Intel Xeon Gold 6252 with 24 cores (48
+memory *per* NUMA node. e.g., 4 socket Intel Xeon Gold 6252 with 24 cores (48
 hardware threads) and 384GB memory per-socket (1.5TB total memory).
 
 
@@ -70,27 +70,31 @@ $ sudo apt-get install build-essential libncurses-dev \
 		     bridge-utils virtinst virt-manager
 ```                       
 
-Obtaining Pre-Compiled Binaries
--------------------------------
+Deploying
+---------
 
-This repository does not contain any source code or binaries. There are scripts
-which download the pre-compiled binaries, or source code for compilation.
+Just clone the artifact on the machine you want to run it on.
 
-**Obtaining Pre-Compiled Binaries**
+**For deploying on a remote machine only.**
 
-To obtain the pre-compiled binaries execute:
+To deploy the binaries and scripts on a remote machine, just clone the
+repository locally, and specify the target host-name you want to run the
+artifact on in `./scripts/configs.sh`. Then run the following script locally.
 
 ```
-$ vmitosis-asplos21-artifact/scripts/download_binaries.sh
+$ vmitosis-asplos21-artifact/scripts/deploy.sh
 ```
-The pre-compiled binaries are available on [Zenodo.org](https://zenodo.org/record/3558908). 
-You can download them manually and place them in the `precompiled` directory.
 
-There are several binaries available on Zenodo:
+Pre-Compiled Binaries
+---------------------
+
+This repository also contains the pre-compiled binaries under `vmitosis-asplos21-artifact/precompiled.`
+There are several binaries available:
 
  * `bench_*` are the benchmarks used in the paper
- * `page_table_dump/numactl/` are helper utilities.
- * `linux-*.deb` are the linux kernel image and headers with vMitosis modifications.
+ * `page_table_dump/numactl/` are helper utilities
+ * `mini_probe/micro_probe` are used to discover NUMA topolgy
+ * `linux-*.deb` are the linux kernel image and headers with vMitosis modifications
 
 
 Obtaining Source Code and Compile
@@ -99,18 +103,16 @@ Obtaining Source Code and Compile
 If you don't want to compile from scratch, you can skip this section.
 
 The source code for the Linux kernel and evaluated worloads are available on 
-GitHub. To obtain the source code you can initialize the corresponding git 
-submodules. **Note: the repositories are private at this moment, as they are not
-ready for public release.**
+GitHub and included as public submodules. To obtain the source code, initialize the git submodules.
 
 ```
+$ cd vmitosis-asplos21-artifact
 $ git submodule init
 $ git submodule update
 ```
 
-To compile everything just type `make`
-
-To compile the different binaries individually, type:
+To compile everything just type `make`.
+To compile different binaries individually, type:
 
  * vMitosis Linux Kernel:  `make vmitosis-linux`
  * vMitosis numactl: `make vmitosis-numactl`
@@ -132,23 +134,25 @@ Install a virtual machine using command line (choose ssh-server when prompted fo
 virt-install --name vmitosis --ram 4096 --disk path=/home/ashish/vmitosis.qcow2,size=50 --vcpus 4 --os-type linux --os-variant generic --network bridge=virbr0 --graphics none --console pty,target_type=serial --location 'http://archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' --extra-args 'console=ttyS0,115200n8 serial'
 ```
 
-Dump the VM configuration file somewhere as follows:
+Copy the default XML configuration file in three files under `vmitosis-asplos21-artifact/vmconfigs/` as follows:
 ```
-$ virsh dumpxml vmitosis > $HOME/config.xml
+$ virsh dumpxml vmitosis > vmitosis-asplos21-artifact/vmconfigs/numa-visible.xml
+$ virsh dumpxml vmitosis > vmitosis-asplos21-artifact/vmconfigs/numa-oblivious.xml
+$ virsh dumpxml vmitosis > vmitosis-asplos21-artifact/vmconfigs/thin.xml
 ```
 
-**TODO-1:** Use config.xml to create three VM configurations and place all XML files in "vmitosis-asplos21-artifact/vmconfigs":
-1. NUMA-visible wide VM, using all CPUs and memory (XML file name: "numa-visible.xml")
-2. NUMA-oblivious wide VM, using all CPUs and memory( XML file name:  "numa-oblivious.xml")
-3. NUMA-oblivious thin VM , using CPUs and memory from NUMA socket 0 (XML file name: "small-singlesocket.xml")
+Now, update each configuration file to configure the number of CPUs, memory and NUMA-topology as follows:
+1. **numa-visible.xml** : Allocate all CPUs and memory. Configure NUMA topology in a way that mirrors the host NUMA topology.
+2. **numa-oblivious.xml** : Allocate all CPUs and memory. All NUMA related tags shoud be removed to hide the topology from the guest.
+3. **thin.xml** : Allocate CPUs and memory from a single socket. All NUMA related tags should be removed.
 
-The following tags need to be updated while configuring the VM:
+For all these configurations, the following tags are important:
 ```
-1. <vcpu> </vcpu> -- to update the number of CPUs to be allocated to the VM
-2. <memory> </memory> -- to update the amount of memory to be allocated to the VM
+1. <vcpu> </vcpu> -- to update the number of CPUs to be allocated to the VM (all or single socket)
+2. <memory> </memory> -- to update the amount of memory to be allocated to the VM (all or single socket)
 3. <cputune> <cputune> -- to bind vCPUs to pCPUs
-4. <numatune> </numatune> -- to setup the number of guest NUMA nodes
-5. <cpu><numa> </numa></cpu> -- to bind vCPUs to guest NUMA nodes
+4. <numatune> </numatune> -- to setup the number of guest NUMA nodes (required only for **numa-visible.xml**)
+5. <cpu><numa> </numa></cpu> -- to bind vCPUs to guest NUMA nodes (required only for **numa-oblivious.xml**)
 ```
 
 The guest OS needs to be booted with vmitosis kernel image. The same can also be configured with "os" tag
@@ -156,19 +160,24 @@ in the XML files as follows:
 ```
   <os>
     <type arch='x86_64' machine='pc-i440fx-eoan-hpb'>hvm</type>
-    <kernel>/boot/vmlinuz-4.17.0-lptr+</kernel>
-    <initrd>/boot/initrd.img-4.17.0-lptr+</initrd>
+    <kernel>/boot/vmlinuz-4.17.0-mitosis+</kernel>
+    <initrd>/boot/initrd.img-4.17.0-mitosis+</initrd>
     <cmdline>console=ttyS0 root=/dev/sda1</cmdline>
     <boot dev='hd'/>
   </os>
 ```
-Refer to "vmitosis-asplos21-artifact/vmconfigs/samples/" for VM configurations used in the paper.
+
+Refer to `vmitosis-asplos21-artifact/vmconfigs/samples/` for all VM configurations used in the paper.
 
 Once all three configuration files are ready, setup passwordless authentication between the host and VM (both ways).
 This can be done, for example, by adding the RSA key of the host user to "$HOME/.ssh/authorized_keys"
-in the guest and vice-versa.
+in the guest and vice-versa. Add the host and guest user to sudoers; they should be able to execute sudo without entering password.
+An example `/etc/sudoers` entry is shown below:
+```
+ashish  ALL=(ALL:ALL) NOPASSWD:ALL
+```
 
-**TODO-2:** Update the ip address and user names of the host machine and VM in "vmitosis-asplos21-artifact/scripts/configs.sh"
+Update the ip address and user names of the host machine and VM in `vmitosis-asplos21-artifact/scripts/configs.sh`
 in the following fields:
 ```
 GUESTUSER
@@ -177,7 +186,7 @@ HOSTUSER
 HOSTADDR
 ```
 
-**TODO-3:** Configure the guest OS to auto mount the "vmitosis-asplos21-artifact" repository on every boot in the same path as it is in the host using a network file system. An example '/etc/fstab' entry that uses SSHFS is shown below (assuming that the artifact is placed in the home directory of the user):
+Configure the guest OS to auto mount the `vmitosis-asplos21-artifact` repository on every boot in the same path as it is in the host using a network file system. An example `/etc/fstab` entry that uses SSHFS is shown below (assuming that the artifact is placed in the home directory of the user):
 ```
 ashish@10.202.4.119:/home/ashish/vmitosis-asplos21-artifact /home/ashish/vmitosis-asplos21-artifact fuse.sshfs identityfile=/home/ashish/.ssh/id_rsa,allow_other,default_permissions 0 0
 ```
@@ -186,57 +195,30 @@ Evaluation Preparation
 ----------------------
 
 To run the evaluations of the paper, you need a suitable machine (see Hardware 
-Dependencies) and you need to boot your machine with the vMitosis-Linux you
-downloaded or compiled yourself. Both, the kernel image and the headers!.
+Dependencies) and you need to boot your machine with vMitosis-Linux installed with
+the provided Debian packages or by building from the source. Install both --the kernel image and the headers!.
 
-To install the kernel module for page-table dumping you need to execute:
-```
-$ make install lkml
-```
-
-It's best to compile it on the machine runnig vMitosis-Linux. 
-```
-$ make vmitosis-page-table-dump
-```
-
-
-Deploying
----------
-
-Just clone the artifact on the machine you want to run it on. 
-
-**For deploying on a remote machine only.**
-
-To deploy the binaries and scripts on a remote machine, just clone the 
-repository locally, and specify the target host-name you want to run the
-artifact on in `./scripts/site_config.sh`. Then run the following script 
-locally. 
-
-```
-$ vmitosis-asplos21-artifact/scripts/deploy.sh
-```
 
 Preparing Datasets
 ------------------
 
-The "canneal" workload requires a dataset to run (small for Figure-1 and Figure-3, large
+The `canneal` workload requires a dataset to run (small for Figure-1 and Figure-3, large
 for Figure-4 and Figure-5). Scripts to download or generate the datasets are placed in
-`datasets/`. These datasets require approximately 65GB of disk space. Generate datasets as:
+`vmitosis-asplos21-artifact/datasets/`. These datasets require approximately 65GB of disk space. Generate datasets as:
 
 ```
 $ vmitosis-asplos21-artifact/datasets/prepare_canneal_datasets.sh [small|large]
 ```
 
-If dataset is not present, it will be generated automatically while executing the experiment.
+If the required dataset is not present, it will be generated automatically while executing the experiments.
 
 
 Running the Experiments
 -----------------------
 
-Before you start running the experiments, make sure you fill in the site
-configuration file `site-config.sh`.
+Before you start running the experiments, make sure you fill in the configuration file `configs.sh`.
 
-To run all experiments, execute (this may take a while...)
+To run all experiments, execute (Each experiment takes a while to complete!)
 
 ```
 $ vmitosis-asplos21-artifact/scripts/run_all.sh
@@ -262,14 +244,21 @@ Naming conventions for arguments:
  * Use "small letters" for benchmark name (e.g., btree, xsbench).
  * Use "CAPITAL LETTERS" for configuration name (e.g., LL, RRI).
 
-Refer to the corresponding scripts for the list of supported benchmarks
+Refer to the corresponding run scripts for the list of supported benchmarks
 and configurations.
 
-All output logs will be redirected to "evaluation/measured/data/".
+There are test binaries available to quickly validate the experimental environment.
+Use "test" as benchmark name in any experiment with any configuration (except Figure-6).
+For example:
+
+ * `vmitosis-asplos21-artifact/scripts/run_figure-1.sh test LL`
+ * `vmitosis-asplos21-artifact/scripts/run_figure-4.sh test FM`
+
+All output logs will be redirected to `evaluation/measured/data/`.
 
 
 Prepare the Report
------------------------
+------------------
 
 When you collected all or partial experimental data, you can compile them
 to compare against the reference data shown in the paper:
@@ -279,10 +268,10 @@ $ vmitosis-asplos21-artifact/scripts/compile_report.sh
 ```
 
 All PDF plots and CSV files from measured and reference data will be redirected to
-"vmitosis-artifact-report/".
+`vmitosis-artifact-report/`.
 
-Copy the report directory to your desktop machine and open "vmitosis-artifact-report/vmitosis.html"
-in your browser to view the reference and measured plots side by side.
+Copy the report directory to your desktop machine and open `vmitosis-artifact-report/vmitosis.html`
+in your web browser to view the reference and measured plots side by side.
 
 
 Collecting Experiment Data
@@ -292,7 +281,7 @@ In case you used the deploy script, you can execute
 ```
 $ vmitosis-asplos21-artifact/scripts/collect-report.sh
 ```
-To copy the report from the remote machine to your local one.
+To copy the report from the remote machine to your local one and then view the report in a web browser.
 
 Paper Citation
 --------------
