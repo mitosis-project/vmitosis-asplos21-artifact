@@ -14,3 +14,6 @@
 	path = sources/vmitosis-workloads
 	url = https://github.com/mitosis-project/vmitosis-workloads.git
         ignore = dirty
+[submodule "sources/vmitosis-linux"]
+	path = sources/vmitosis-linux
+	url = https://github.com/mitosis-project/mitosis-linux.git
