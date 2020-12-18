@@ -152,7 +152,7 @@ For all these configurations, the following tags are important:
 2. <memory> </memory> -- to update the amount of memory to be allocated to the VM (all or single socket)
 3. <cputune> <cputune> -- to bind vCPUs to pCPUs
 4. <numatune> </numatune> -- to setup the number of guest NUMA nodes (required only for **numa-visible.xml**)
-5. <cpu><numa> </numa></cpu> -- to bind vCPUs to guest NUMA nodes (required only for **numa-oblivious.xml**)
+5. <cpu><numa> </numa></cpu> -- to bind vCPUs to guest NUMA nodes (required only for **numa-visible.xml**)
 ```
 
 The guest OS needs to be booted with vmitosis kernel image. The same can also be configured with "os" tag
