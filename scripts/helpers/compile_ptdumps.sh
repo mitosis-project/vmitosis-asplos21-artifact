@@ -23,7 +23,8 @@ BENCHMARKS="memcached xsbench graph500 canneal dumptest"
 NUMACONFIGS="visible oblivious"
 #############################################################################
 
-SCRIPTS=$(readlink -f "`dirname $(readlink -f "$0")`")
+HELPERS=$(readlink -f "`dirname $(readlink -f "$0")`")
+SCRIPTS=$(dirname "${SCRIPTS}")
 ROOT=$(dirname "${SCRIPTS}")
 
 for BENCHMARK in $BENCHMARKS; do

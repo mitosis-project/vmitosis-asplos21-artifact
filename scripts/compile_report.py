@@ -263,7 +263,7 @@ def gen_fig6_csv(root, src, target, plots):
         os.system("%s %s %s" %(plotgen, out_csv, out_pdf))
 
 def gen_fig2_csv(root, target):
-    src = os.path.join(root, "scripts/compile_ptdumps.sh %s" %(target))
+    src = os.path.join(root, "scripts/helpers/compile_ptdumps.sh %s" %(target))
     os.system(src)
 
 def copy_final_graphs(root, target):

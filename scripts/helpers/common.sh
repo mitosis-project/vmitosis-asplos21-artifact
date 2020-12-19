@@ -34,8 +34,11 @@ stop_kvm_vm()
 		log_msg "VM is running. Shutting down."
 		ssh $GUESTUSER@$GUESTADDR "sudo shutdown now" &> /dev/null
 		wait $PID 2>/dev/null
-		sleep $WAIT_SECS_SHORT
+		sleep $WAIT_SECS_LONG
 	fi
+	virsh destroy $VMIMAGE > /dev/null 2>&1
+	sleep 3
+	# --- try again just to be safe
 	virsh destroy $VMIMAGE > /dev/null 2>&1
 	PID=$(pgrep qemu-system-x86)
 	if [[ ! -z "${PID}" ]]; then
