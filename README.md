@@ -125,16 +125,22 @@ To compile different binaries individually, type:
  * memcached: `make memcached`
 
 
-Install and Configure a Virtual Machine
----------------------------------------
+Install and Create Virtual Machine Configurations
+-------------------------------------------------
 
 Install a virtual machine using command line (choose ssh-server when prompted for package installation):
 
 ```
-virt-install --name vmitosis --ram 4096 --disk path=/home/ashish/vmitosis.qcow2,size=50 --vcpus 4 --os-type linux --os-variant generic --network bridge=virbr0 --graphics none --console pty,target_type=serial --location 'http://archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' --extra-args 'console=ttyS0,115200n8 serial'
+$ virt-install --name vmitosis --ram 4096 --disk path=/home/ashish/vmitosis.qcow2,size=50 --vcpus 4 --os-type linux --os-variant generic --network bridge=virbr0 --graphics none --console pty,target_type=serial --location 'http://archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' --extra-args 'console=ttyS0,115200n8 serial'
 ```
+Once installed, use the following script to prepare three VM configuration files:
+```
+$ vmitosis-asplos21-artifact/scripts/gen_vmconfigs.py vmitosis
 
-Copy the default XML configuration file in three files under `vmitosis-asplos21-artifact/vmconfigs/` as follows:
+```
+If it works well, skip the rest of this subsection. Otherwise you may have to manually create VM configurations following the instructions provided below.
+
+Copy the default XML configuration file in three files under `vmitosis-asplos21-artifact/vmconfigs/`:
 ```
 $ virsh dumpxml vmitosis > vmitosis-asplos21-artifact/vmconfigs/numa-visible.xml
 $ virsh dumpxml vmitosis > vmitosis-asplos21-artifact/vmconfigs/numa-oblivious.xml
@@ -169,15 +175,20 @@ in the XML files as follows:
 
 Refer to `vmitosis-asplos21-artifact/vmconfigs/samples/` for all VM configurations used in the paper.
 
-Once all three configuration files are ready, setup passwordless authentication between the host and VM (both ways).
-This can be done, for example, by adding the RSA key of the host user to "$HOME/.ssh/authorized_keys"
-in the guest and vice-versa. Add the host and guest user to sudoers; they should be able to execute sudo without entering password.
+
+Additional Settings Post VM Installation
+----------------------------------------
+
+* Setup passwordless authentication between the host and VM (both ways). This can be done, for example, by
+adding the RSA key of the host user to "$HOME/.ssh/authorized_keys" in the guest and vice-versa.
+
+* Add the host and guest user to sudoers; they should be able to execute sudo without entering password.
 An example `/etc/sudoers` entry is shown below:
 ```
 ashish  ALL=(ALL:ALL) NOPASSWD:ALL
 ```
 
-Update the ip address and user names of the host machine and VM in `vmitosis-asplos21-artifact/scripts/configs.sh`
+* Edit the ip address and user names of the host machine and VM in `vmitosis-asplos21-artifact/scripts/configs.sh`
 in the following fields:
 ```
 GUESTUSER
@@ -186,7 +197,7 @@ HOSTUSER
 HOSTADDR
 ```
 
-Configure the guest OS to auto mount the `vmitosis-asplos21-artifact` repository on every boot in the same path as it is in the host using a network file system. An example `/etc/fstab` entry that uses SSHFS is shown below (assuming that the artifact is placed in the home directory of the user):
+* Configure the guest OS to auto mount the `vmitosis-asplos21-artifact` repository on every boot in the same path as it is in the host using a network file system. An example `/etc/fstab` entry that uses SSHFS is shown below (assuming that the artifact is placed in the home directory of the user):
 ```
 ashish@10.202.4.119:/home/ashish/vmitosis-asplos21-artifact /home/ashish/vmitosis-asplos21-artifact fuse.sshfs identityfile=/home/ashish/.ssh/id_rsa,allow_other,default_permissions 0 0
 ```
