@@ -106,6 +106,7 @@ def add_vcpu_numa_tune(config, main, child):
         newtag.set('vcpu', str(i))
 
     if config != 'numa-visible':
+        remove_tag(main, 'numatune')
         return
 
     new = ET.Element('numatune')

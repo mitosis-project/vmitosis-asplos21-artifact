@@ -13,5 +13,6 @@ datasets/canneal_large
 vmconfigs/numa-visible.xml
 vmconfigs/numa-oblivious.xml
 vmconfigs/thin.xml
+vmconfigs/template.xml
 vmitosis-artifact-report/measured/*
 vmitosis-artifact-report/reference/*
