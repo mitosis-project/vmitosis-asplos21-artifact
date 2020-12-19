@@ -29,6 +29,10 @@ ROOT=$(dirname "${SCRIPTS}")
 
 for BENCHMARK in $BENCHMARKS; do
 	for CONFIG in $NUMACONFIGS; do
+		# --- break if ptdumps are not available
+		if [ ! -e $ROOT/evaluation/measured/data/ptdumps/ ]; then
+			break
+		fi
 		gPT=$(find $ROOT/evaluation/measured/data/ptdumps/ -name $BENCHMARK\_gpt_dump_$CONFIG.dat | head -1)
 		ePT=$(find $ROOT/evaluation/measured/data/ptdumps/ -name $BENCHMARK\_ept_dump_$CONFIG.dat | head -1)
 		if [ -z "$gPT" ] || [ -z "$ePT" ]; then
