@@ -16,3 +16,4 @@ vmconfigs/thin.xml
 vmconfigs/template.xml
 vmitosis-artifact-report/measured/*
 vmitosis-artifact-report/reference/*
+precompiled/perf
