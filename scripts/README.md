@@ -1,6 +1,6 @@
 Instructions
 ------------
-This directory contains various scripts to evaluate and reproduce artifact of the following paper:
+This directory contains various scripts to evaluate and reproduce artifact of the paper:
 **Fast Local Page-Tables for Virtualized NUMA Servers with vMitosis** [ASPLOS'21]
 
 The following instructions describe how to run the experiments, process the logs from experimental data, where to find the output of your experiments and and how to compare your experimental results with reference data presented in the paper.
@@ -31,7 +31,7 @@ For example:
 ```
 $ vmitosis-asplos21-artifact/scripts/run_figure-1.sh memcached RRI
 ```
-Pl. refer to the corresponding `run_figure-x.sh` files to check the names of supported benchmarks and configurations. In some cases, configuration names differ from the paper for simplicity. For example, THP configurations are prefixed with "T" (e.g., TLL, TRRI etc.) and THP + fragmentation configurations are prefixed with "TF" (e.g., TFLL, TFRRI etc.)
+Pl. refer to the corresponding `./run_figure-x.sh` files to check the names of supported benchmarks and configurations. In some cases, configuration names differ from the paper for simplicity. For example, THP configurations are prefixed with "T" (e.g., TLL, TRRI etc.) and THP + fragmentation configurations are prefixed with "TF" (e.g., TFLL, TFRRI etc.)
 
 Note: Do not execute the `./run_guest_figure-x.sh` scripts directly. They are automatically invoked by the corresponding hypervisor script after configuring parameters that are important for the evaluation (e.g., replication, migration, THP etc.).
 
