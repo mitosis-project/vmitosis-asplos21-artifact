@@ -4,28 +4,22 @@ allocating 624000000000 bytes (581 GB) for the element slabs
 =====================================
 allocating 499200000000 bytes (464 GB) for the element array
 Populate the database
-Elms array 0x7e79815c8000
+Elms array 0x7dccd55c8000
 Populating 0 / 3900000000 key-value pairs:
 Populated 3900000000 / 3900000000 key-value pairs:
 =====================================
 signalling readyness to /tmp/alloctest-bench.ready
 signalling done to /tmp/alloctest-bench.done
-/home/ashish/disk/mitosis/mitosis-tools/bin/bench_memcached_mt 
-<benchmark exec="/home/ashish/disk/mitosis/mitosis-tools/bin/bench_memcached_mt">
+/home/ashish/vmitosis-asplos21-artifact/bin/bench_memcached_mt 
+<benchmark exec="/home/ashish/vmitosis-asplos21-artifact/bin/bench_memcached_mt">
 <config>
   <openmp>on</openmp>  <memsize>1G <memsize>  <hugetlb>0</hugetlb>
   <data>-1</data>  <interference>0</interference>
 </config>
 <run>
 ****success****
-Execution Time (seconds): 1868
-Initialization Time (seconds): 14489
+Execution Time (seconds): 507
+Initialization Time (seconds): 14721
 
-# started on Thu May  7 04:16:43 2020
 
-178477100323759,,cycles:u,305662248760629,100.00,,
-35699399013556,,dtlb_load_misses.walk_pending:u,305658549440591,100.00,,
-110562703936,,dtlb_store_misses.walk_pending:u,305647274630517,100.00,,
-48557033698536,,ept.walk_pending:u,305629618598329,100.00,,
-
-/home/ashish/disk/mitosis/mitosis-tools/bin/numactl --pgtablerepl=0 /home/ashish/disk/mitosis/mitosis-tools/bin/bench_memcached_mt 
+/home/ashish/vmitosis-asplos21-artifact/bin/numactl --pgtablerepl=0 /home/ashish/vmitosis-asplos21-artifact/bin/bench_memcached_mt 
