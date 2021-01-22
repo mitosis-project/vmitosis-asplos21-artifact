@@ -62,8 +62,8 @@ prepare_basic_config_params()
         fi
         PT_NODE=0
         # --- setup data node
-        DATA_NODE=1
-        if [ $CURR_CONFIG = "LL" ]; then
+        DATA_NODE=2
+        if [[ $CURR_CONFIG == *LL* ]]; then
                 DATA_NODE=0
         fi
 
@@ -106,8 +106,8 @@ prepare_all_pathnames()
 fragment_memory()
 {
 	NR_THREADS=48
-	NR_SECONDS=1200
-	log_msg "Fetching fragmentation files in memory. This will take a while..."
+	NR_SECONDS=900
+	log_msg "Fetching fragmentation files in node $DATA_NODE. This will take a while..."
 	$NUMACTL -c $DATA_NODE -m $DATA_NODE cat $FRAGMENT_FILE1 > /dev/null &
 	PID_1=$!
 	$NUMACTL -c $DATA_NODE -m $DATA_NODE cat $FRAGMENT_FILE2 > /dev/null &

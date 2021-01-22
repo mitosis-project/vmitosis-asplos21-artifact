@@ -83,6 +83,7 @@ boot_prepare_kvm_vm()
 	fi
 	log_msg "started vm"
 	sleep $WAIT_SECS_LONG
+	sleep 30
 	# --- better to hardcode it in each VM config file
 	#MAXVCPU=$(virsh vcpuinfo $VMIMAGE | grep VCPU | tail -1 | awk '{print $2}')
 	#for (( i=0; i<=$MAXVCPU; i++ )); do

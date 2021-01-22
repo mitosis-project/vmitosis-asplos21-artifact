@@ -15,7 +15,6 @@ echo "************************************************************************"
 
 #############################################################################
 BENCHMARKS="gups btree redis xsbench memcached canneal"
-#BENCHMARKS="test"
 
 # GPT/EPT (Local/Remote)
 # "LL RRI" are supported but they can be re-used from Figure-1
