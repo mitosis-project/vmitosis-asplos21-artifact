@@ -96,6 +96,14 @@ There are several binaries available:
  * `mini_probe/micro_probe` are used to discover NUMA topolgy
  * `linux-*.deb` are the linux kernel image and headers with vMitosis modifications
 
+If you only plan to use the pre-compiled binaries, install vMitosis kernel headers and image, and
+boot your target machine with vMitosis kernel before running any experiments.
+
+```
+$ dpkg -i precompiled/linux-headers-4.17.0-mitosis+_4.17.0-mitosis+-3_amd64.deb
+$ dpkg -i precompiled/linux-image-4.17.0-mitosis+_4.17.0-mitosis+-3_amd64.deb
+```
+
 
 Obtaining Source Code and Compile
 ---------------------------------
