@@ -107,6 +107,10 @@ fragment_memory()
 {
 	NR_THREADS=48
 	NR_SECONDS=900
+	if [ ! -e $FRAGMENT_FILE1 ] || [ ! -s $FRAGMENT_FILE1 ] ||
+		[ ! -e $FRAGMENT_FILE2 ] || [ ! -s $FRAGMENT_FILE2 ]; then
+		$ROOT/datasets/prepare_fragmentation_datasets.py
+	fi
 	log_msg "Fetching fragmentation files in node $DATA_NODE. This will take a while..."
 	$NUMACTL -c $DATA_NODE -m $DATA_NODE cat $FRAGMENT_FILE1 > /dev/null &
 	PID_1=$!
