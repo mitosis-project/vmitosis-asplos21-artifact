@@ -9,6 +9,9 @@
 #          K. Gopinath and Jayneel Gandhi
 #################################################################################
 
+SCRIPT=$(readlink -f "`dirname $(readlink -f "$0")`")
+MAIN=$(dirname "${SCRIPT}")
+
 # --- update to deploy on a different test machine
 MACHINE=hostname
 URL=$MACHINE:vmitosis-asplos21-artifact
@@ -21,11 +24,11 @@ HOSTUSER=ashish
 HOSTADDR="10.202.4.119"
 
 # --- libvirt's VM image id
-VMIMAGE=mirage
+VMIMAGE=vmitosis
 
 # --- required for Figure-3c
-FRAGMENT_FILE1=$HOME/disk3/fragmentation/frag-1
-FRAGMENT_FILE2=$HOME/disk4/fragmentation/frag-2
+FRAGMENT_FILE1=$MAIN/datasets/fragmentation/frag-1
+FRAGMENT_FILE2=$MAIN/datasets/fragmentation/frag-2
 
 #############################################################################
 #                        DON'T EDIT BELOW THIS LINE                         #
