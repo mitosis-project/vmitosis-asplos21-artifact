@@ -108,6 +108,11 @@ prepare_numactl_prefix()
         fi
 }
 
+warmup_guest_memory()
+{
+	$ROOT/bin/warmup -t 192 -m 1500 -i 5 > /dev/null 2>&1
+}
+
 initiate_pt_dump()
 {
 	log_msg "initiating pgtable dumps"
@@ -170,4 +175,7 @@ launch_benchmark_config()
 prepare_benchmark_name $BENCHMARK
 prepare_basic_config_params $CONFIG
 prepare_all_pathnames
+if [[ $CONFIG == *O* ]]; then
+	warmup_guest_memory
+fi
 launch_benchmark_config
