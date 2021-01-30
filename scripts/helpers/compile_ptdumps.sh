@@ -24,7 +24,7 @@ NUMACONFIGS="visible oblivious"
 #############################################################################
 
 HELPERS=$(readlink -f "`dirname $(readlink -f "$0")`")
-SCRIPTS=$(dirname "${SCRIPTS}")
+SCRIPTS=$(dirname "${HELPERS}")
 ROOT=$(dirname "${SCRIPTS}")
 
 for BENCHMARK in $BENCHMARKS; do
